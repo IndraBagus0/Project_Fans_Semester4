@@ -26,7 +26,7 @@
                                     <span class="mb-2 text-xs">Kecepatan: <span
                                             class="text-dark ms-sm-2 font-weight-bold">30 MBps</span></span>
                                     <span class="mb-2 text-xs">Harga: <span class="text-dark ms-sm-2 font-weight-bold">Rp
-                                            2000000</span></span>
+                                            2005000</span></span>
                                     <span class="text-xs">Bandwith: <span class="text-dark ms-sm-2 font-weight-bold">Rp
                                             1 : 8</span></span>
                                 </div>
