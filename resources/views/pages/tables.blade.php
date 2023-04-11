@@ -23,6 +23,9 @@
                                             Status</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Invoice</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Employed</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -47,6 +50,12 @@
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-success">Online</span>
                                         </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</button>
+                                        </td>
+
+
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                                         </td>
@@ -75,6 +84,10 @@
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</button>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
@@ -105,6 +118,10 @@
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-success">Online</span>
                                         </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</button>
+                                        </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
                                         </td>
@@ -134,6 +151,10 @@
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-success">Online</span>
                                         </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</button>
+                                        </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
                                         </td>
@@ -148,7 +169,8 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user5">
+                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3"
+                                                        alt="user5">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">Richard Gran</h6>
@@ -162,6 +184,10 @@
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</button>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
@@ -192,6 +218,10 @@
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</button>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
