@@ -35,7 +35,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
-
+use App\Http\Controllers\DataAdmin;
+use App\Http\Controllers\ListProduk;
 
 Route::get('/', function () {
 	return redirect('/dashboard');
@@ -50,7 +51,6 @@ Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('gue
 Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
@@ -59,4 +59,21 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+});
+// // route::get('/user-management', [DataAdmin::class, 'show'])->name('user-management');
+// route::controller(DataAdmin::class)->prefix('users')->group(function () {
+// 	route::get('', 'show')->name('user');
+// });
+
+// route::controller(ListProduk::class)->prefix('users')->group(function () {
+// 	route::get('', 'show')->name('produk');
+// });
+
+// // untuk menuju ke halaman pengelaman kerja
+// Route::resource('produk', ListProduk::class);
+// // untuk menuju ke halaman pendidikan
+// Route::resource('user-management', DataAdmin::class);
+
+route::middleware(['auth'])->group(function () {
+	route::resource('produk', ListProduk::class);
 });

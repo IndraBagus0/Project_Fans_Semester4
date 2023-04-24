@@ -7,10 +7,8 @@ use App\Models\User;
 
 class DataAdmin extends Controller
 {
-    public function index()
+    public function show()
     {
-        return view('user-management.pages ', [
-            'users' => User::all()
-        ]);
+        return view('pages.user-management');
     }
 }

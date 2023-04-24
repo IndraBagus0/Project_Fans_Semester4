@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Produk;
+use Illuminate\Support\Facades\DB;
 
 class ListProduk extends Controller
 {
     public function index()
     {
-        return view('tables', [
-            'produks' =>  Produk::all()
-        ]);
+        $produk = Produk::get();
+        return view('pages.produk', compact('produk'));
     }
 }

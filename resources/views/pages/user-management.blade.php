@@ -29,16 +29,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $users)
+                                @foreach ($users as $user)
                                     <tr>
                                         <td>
                                             <div class="d-flex px-3 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $users->username }}</h6>
+                                                    <h6 class="mb-0 text-sm">{{ $user->username }}</h6>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             <p class="text-sm font-weight-bold mb-0">Admin</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
@@ -49,7 +49,7 @@
                                                 <p class="text-sm font-weight-bold mb-0">Edit</p>
                                                 <p class="text-sm font-weight-bold mb-0 ps-2">Delete</p>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
