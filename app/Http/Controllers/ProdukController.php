@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Produk;
 use Illuminate\Support\Facades\DB;
 
-class ListProduk extends Controller
+class ProdukController extends Controller
 {
-    public function index()
+    public function show()
     {
         $produk = Produk::get();
         return view('pages.produk', compact('produk'));
