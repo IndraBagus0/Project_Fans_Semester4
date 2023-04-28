@@ -11,7 +11,7 @@
 ## Installation
 1. Clone Repo
     ```console
-    git clone https://github.com/GalehLudi/Penjualan.git
+    git clone https://github.com/IndraBagus0/Project_Fans_Semester4.git
     ```
 
 2. Run
@@ -43,5 +43,5 @@
 | Argon Dashboard 2 | <https://argon-dashboard-laravel.creative-tim.com/docs/bootstrap/overview/argon-dashboard/index.html> |
 
 ## Social Media
-[Instagram](https://instagram.com/galehludi)
-[Github](https://github.com/GalehLudi)
+[Instagram](https://instagram.com/ndraabagus)
+[Github](https://github.com/indrabagus0)
