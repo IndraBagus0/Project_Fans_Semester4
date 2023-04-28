@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="d-flex align-items-center">
-                            <p class="mb-0">Edit Produk</p>
+                            <p class="mb-0">List Produk</p>
                             <button type="button" class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal"
                                 data-bs-target="#exampleModalTambah">
                                 Tambah Produk
@@ -23,7 +23,7 @@
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-3 text-sm">{{ $row->nama_produk }}</h6>
                                         <span class="mb-2 text-xs">Id: <span
-                                                class="text-dark font-weight-bold ms-sm-2">{{ $row->kode_produk }}</span></span>
+                                                class="text-dark font-weight-bold ms-sm-2">{{ $row->id }}</span></span>
                                         <span class="mb-2 text-xs">Kecepatan: <span
                                                 class="text-dark ms-sm-2 font-weight-bold">{{ $row->kecepatan }}</span></span>
                                         <span class="mb-2 text-xs">Harga: <span

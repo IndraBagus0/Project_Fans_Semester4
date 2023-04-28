@@ -60,9 +60,27 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
 	// Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-	Route::get('/produk', [ProdukController::class, 'show'])->name('produk');
-	Route::get('/produk', [ProdukController::class, 'update'])->name('produk.update');
-	Route::get('/produk', [ProdukController::class, 'delete'])->name('produk.delete');
 });
-Route::get('/produk', [ProdukController::class, 'index'])->name('keProduk')->middleware('auth');
-Route::get('/user-management', [UsersController::class, 'index'])->name('keUsers')->middleware('auth');
+// Route::get('/produk', [ProdukController::class, 'index'])->name('keProduk')->middleware('auth');
+// Route::get('/user-management', [UsersController::class, 'index'])->name('keUsers')->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+
+	Route::controller(ProdukController::class)->prefix('produk')->group(function () {
+		Route::get('', 'index')->name('keProduk');
+		Route::get('tambah', 'tambah')->name('produk.tambah');
+		Route::post('tambah', 'simpan')->name('produk.tambah.simpan');
+		Route::get('edit/{id}', 'edit')->name('produk.edit');
+		Route::post('edit/{id}', 'update')->name('produk.tambah.update');
+		Route::get('hapus/{id}', 'hapus')->name('produk.hapus');
+	});
+
+	Route::controller(UsersController::class)->prefix('admin')->group(function () {
+		Route::get('', 'index')->name('keUsers');
+		Route::get('tambah', 'tambah')->name('admin.tambah');
+		Route::post('tambah', 'simpan')->name('admin.tambah.simpan');
+		Route::get('edit/{id}', 'edit')->name('admin.edit');
+		Route::post('edit/{id}', 'update')->name('admin.tambah.update');
+		Route::get('hapus/{id}', 'hapus')->name('admin.hapus');
+	});
+});
