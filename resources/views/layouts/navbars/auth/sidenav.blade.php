@@ -42,7 +42,7 @@
                 </a>
             </li> --}}
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link " href="{{ route('sign-in-static') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -71,7 +71,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}"
                     href="{{ route('page', ['page' => 'user-management']) }}">
@@ -93,7 +93,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'tambah-admin') == true ? 'active' : '' }}"
                     href="{{ route('page', ['page' => 'tambah-admin']) }}">
                     <div
@@ -123,8 +123,8 @@
                 </a>
             </li>
         </ul>
-    </div>
-    {{-- <div class="sidenav-footer mx-3 ">
+    </div> --}}
+            {{-- <div class="sidenav-footer mx-3 ">
         <div class="card card-plain shadow-none" id="sidenavCard">
             <img class="w-50 mx-auto" src="/img/illustrations/icon-documentation-warning.svg"
                 alt="sidebar_illustration">
