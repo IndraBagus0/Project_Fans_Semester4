@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
 {
-    public function show()
+    public function index()
     {
         $produk = Produk::get();
         return view('pages.produk', compact('produk'));

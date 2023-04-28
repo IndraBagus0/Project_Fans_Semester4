@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,8 +36,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
-use App\Http\Controllers\DataAdmin;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
 	return redirect('/dashboard');
@@ -63,3 +64,5 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/produk', [ProdukController::class, 'update'])->name('produk.update');
 	Route::get('/produk', [ProdukController::class, 'delete'])->name('produk.delete');
 });
+Route::get('/produk', [ProdukController::class, 'index'])->name('keProduk')->middleware('auth');
+Route::get('/user-management', [UsersController::class, 'index'])->name('keUsers')->middleware('auth');

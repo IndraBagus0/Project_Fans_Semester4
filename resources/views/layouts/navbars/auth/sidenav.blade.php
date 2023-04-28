@@ -22,6 +22,16 @@
                 </a>
             </li>
             <li class="nav-item ">
+                <a class="nav-link {{ Route::currentRouteName() == 'keProduk' ? 'active' : '' }}"
+                    href="{{ route('keProduk') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-archive text-success text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Produk</span>
+                </a>
+            </li>
+            {{-- <li class="nav-item ">
                 <a class="nav-link {{ str_contains(request()->url(), 'produk') == true ? 'active' : '' }}"
                     href="{{ route('page', ['page' => 'produk']) }}">
                     <div
@@ -30,7 +40,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Produk</span>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('sign-in-static') }}">
@@ -62,9 +72,19 @@
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}"
                     href="{{ route('page', ['page' => 'user-management']) }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-users text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Data User</span>
+                </a>
+            </li> --}}
+            <li class="nav-item ">
+                <a class="nav-link {{ Route::currentRouteName() == 'keUsers' ? 'active' : '' }}"
+                    href="{{ route('keUsers') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-users text-dark text-sm opacity-10"></i>

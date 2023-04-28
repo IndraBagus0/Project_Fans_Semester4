@@ -29,7 +29,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($dataUser as $user)
                                     <tr>
                                         <td>
                                             <div class="d-flex px-3 py-1">
