@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="d-flex align-items-center">
-                            <p class="mb-0">List Produk</p>
+                            <p class="mb-0">Daftar Produk</p>
                             <button type="button" class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal"
                                 data-bs-target="#exampleModalTambah">
                                 Tambah Produk
@@ -52,97 +52,87 @@
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Produk</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Nama :</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                    <div class="modal-body p-0">
+                        <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                                <h3 class="font-weight-bolder text-primary text-gradient">Tambah Produk</h3>
+                            </div>
+                            <div class="card-body pb-3">
+                                <form role="form text-left">
+                                    <label>Nama</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Nama" aria-label="Name"
+                                            aria-describedby="name-addon">
+                                    </div>
+                                    <label>Kecepatan</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Kecepatan" aria-label="Name"
+                                            aria-describedby="name-addon">
+                                    </div>
+                                    <label>Harga</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
+                                            aria-describedby="name-addon">
+                                    </div>
+                                    <label>Banwith</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="bandwith" aria-label="Name"
+                                            aria-describedby="name-addon">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-primary">Edit</button>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text">Rp :</span>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Kecepatan :</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Bandwith :</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn bg-gradient-primary">Edit</button>
                     </div>
                 </div>
             </div>
         </div>
         {{-- modal tambah --}}
-        <div class="modal fade" id="exampleModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal fade" id="exampleModalTambah" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalSignTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Produk</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Nama :</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                    <div class="modal-body p-0">
+                        <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                                <h3 class="font-weight-bolder text-primary text-gradient">Tambah Produk</h3>
+                            </div>
+                            <div class="card-body pb-3">
+                                <form role="form text-left">
+                                    <label>Nama</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Nama" aria-label="Name"
+                                            aria-describedby="name-addon">
+                                    </div>
+                                    <label>Kecepatan</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Kecepatan"
+                                            aria-label="Name" aria-describedby="name-addon">
+                                    </div>
+                                    <label>Harga</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
+                                            aria-describedby="name-addon">
+                                    </div>
+                                    <label>Banwith</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="bandwith"
+                                            aria-label="Name" aria-describedby="name-addon">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-primary">Edit</button>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text">Rp :</span>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Kecepatan :</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Bandwith :</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn bg-gradient-primary">Tambah</button>
                     </div>
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+    </div>
+    </div>
+    @include('layouts.footers.auth.footer')
     </div>
 @endsection
