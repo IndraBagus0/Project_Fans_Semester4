@@ -55,7 +55,7 @@
                     <div class="modal-body p-0">
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-left">
-                                <h3 class="font-weight-bolder text-primary text-gradient">Tambah Produk</h3>
+                                <h3 class="font-weight-bolder text-primary text-gradient">Edit Produk</h3>
                             </div>
                             <div class="card-body pb-3">
                                 <form role="form text-left">
