@@ -12,7 +12,7 @@ class ProdukController extends Controller
     public function index()
     {
         $produk = Produk::get();
-        return view('pages.produk', compact('produk'));
+        return view('pages.produk.produk', compact('produk'));
     }
     //Menambah Data Produk
 

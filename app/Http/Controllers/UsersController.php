@@ -11,6 +11,6 @@ class UsersController extends Controller
     public function index()
     {
         $dataUser = User::get();
-        return view('pages.user-management', compact('dataUser'));
+        return view('pages.data-admin.user-management', compact('dataUser'));
     }
 }
