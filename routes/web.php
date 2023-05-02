@@ -2,7 +2,15 @@
 
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ResetPassword;
+use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,31 +21,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// // basic route
-// Route::get('/tes', function () {
-//     return view('tes', ['nama' => 'indra bagus', 'nomor' => '081515145749']);
-// });
-
-// view rote
-// route::view('/tes', 'tes', ['nama' => 'indra bagus', 'nomor' => '081515145749']);
-
-// //redirect route
-// Route::redirect('/here', '/there');
-
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
 	return redirect('/dashboard');
@@ -58,14 +41,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
-	// Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
-// Route::get('/produk', [ProdukController::class, 'index'])->name('keProduk')->middleware('auth');
-// Route::get('/user-management', [UsersController::class, 'index'])->name('keUsers')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
-
+	// Route Produk
 	Route::controller(ProdukController::class)->prefix('produk')->group(function () {
 		Route::get('', 'index')->name('keProduk');
 		Route::get('tambah', 'tambah')->name('produk.tambah');
@@ -74,7 +54,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('edit/{id}', 'update')->name('produk.tambah.update');
 		Route::get('hapus/{id}', 'hapus')->name('produk.hapus');
 	});
-
+	// Route Data Admin
 	Route::controller(UsersController::class)->prefix('admin')->group(function () {
 		Route::get('', 'index')->name('keUsers');
 		Route::get('tambah', 'tambah')->name('admin.tambah');
@@ -83,4 +63,5 @@ Route::middleware('auth')->group(function () {
 		Route::post('edit/{id}', 'update')->name('admin.tambah.update');
 		Route::get('hapus/{id}', 'hapus')->name('admin.hapus');
 	});
+	//route
 });

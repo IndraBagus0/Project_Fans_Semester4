@@ -10,15 +10,10 @@
                         <div class="d-flex justify-content-between">
 
                             <p class="mb-0">Daftar Produk</p>
-                            {{-- <button type="button" class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal"
                                 data-bs-target="#exampleModalTambah">
                                 Tambah Produk
-                            </button> --}}
-                            <a href="{{ route('produk.tambah') }}">
-                                <button type="button" class="btn btn-primary btn-sm ms-auto">
-                                    Tambah Produk
-                                </button>
-                            </a>
+                            </button>
 
 
                             <!-- Show success or error message after form submission -->
@@ -58,8 +53,9 @@
                                                 class="text-dark ms-sm-2 font-weight-bold">{{ $row->bandwith }}</span></span>
                                     </div>
                                     <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
-                                                class="far fa-trash-alt me-2"></i>Delete</a>
+                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                            href="{{ route('produk.hapus', $row->id) }}"><i class="far fa-trash-alt me-2"
+                                                id="hapus"></i>Delete</a>
                                         <a class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModalEdit" href="javascript:;"><i
                                                 class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
@@ -143,12 +139,12 @@
                                     <label>Harga</label>
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
-                                            name="harga" id="harga" required aria-describedby="name-addon">
+                                            name="harga_produk" id="harga" required aria-describedby="name-addon">
                                     </div>
                                     <label>Banwith</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="bandwith"
-                                            name="kecepatan" id="kecepatan" required aria-label="Name"
+                                            name="bandwith" id="bandwith" required aria-label="Name"
                                             aria-describedby="name-addon">
                                     </div>
                                     <div class="modal-footer">
@@ -166,50 +162,51 @@
     </div>
     @include('layouts.footers.auth.footer')
     </div>
-    <script>
-        // Initialize form validation on the registration form.
-        // It has the name attribute "registration"
-        $("form[name='produk.tambah']").validate({
-            // Specify validation rules
-            rules: {
-                nama_produk: "required",
-                kecepatan: "required",
-                harga: "required",
-                bandwith: "required"
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        $(function() {
+                $(document).on('click', '# ', function(e) {
+                    e.preventDefault();
+                    var link = $(this).attr("href");
 
-            },
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: 'btn btn-success',
+                            cancelButton: 'btn btn-danger'
+                        },
+                        buttonsStyling: false
+                    })
 
-            // Specify validation error messages
-            messages: {
-                nama_produk: "required",
-                kecepatan: "required",
-                harga: "required",
-                bandwith: "required"
-            },
+                    swalWithBootstrapButtons.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'No, cancel!',
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            swalWithBootstrapButtons.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        } else if (
+                            /* Read more about handling dismissals below */
+                            result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                            swalWithBootstrapButtons.fire(
+                                'Cancelled',
+                                'Your imaginary file is safe :)',
+                                'error'
+                            )
+                        }
+                    })
+                })
 
-            // Specify submit handler
-            submitHandler: function(form) {
-                // Submit the form via Ajax
-                $.ajax({
-                    url: form.action,
-                    type: form.method,
-                    data: $(form).serialize(),
-                    success: function(response) {
-                        // Show success message
-                        $('#produk.tambah')[0].reset();
-                        $('.alert-success').fadeIn().html(response.message);
-                    },
-                    error: function(xhr) {
-                        // Show error message
-                        var errors = xhr.responseJSON.errors;
-                        var errorString = '';
-                        $.each(errors, function(key, value) {
-                            errorString += '<li>' + value + '</li>';
-                        });
-                        $('.alert-danger').fadeIn().html(errorString);
-                    }
-                });
             }
-        });
+
+        )
     </script>
 @endsection

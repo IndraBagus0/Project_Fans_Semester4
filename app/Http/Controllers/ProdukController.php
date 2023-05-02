@@ -41,13 +41,13 @@ class ProdukController extends Controller
             'id' => $request->id,
             'nama_produk' => $request->nama_produk,
             'kecepatan' => $request->kecepatan,
-            'harga' => $request->harga,
+            'harga_produk' => $request->harga_produk,
             'bandwith' => $request->bandwith,
         ];
 
         produk::create($produk);
 
-        return redirect()->route('produk');
+        return redirect()->route('keProduk');
     }
 
     /**
@@ -92,6 +92,10 @@ class ProdukController extends Controller
      */
     public function hapus($id)
     {
-        //
+        Produk::find($id)->delete();
+
+        // return redirect()->route('keProduk');
+        // return response()->json(['status' => 'berhasil']);
+        return back();
     }
 }
