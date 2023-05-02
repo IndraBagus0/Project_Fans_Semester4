@@ -37,7 +37,17 @@ class ProdukController extends Controller
      */
     public function simpan(Request $request)
     {
-        //
+        $produk = [
+            'id' => $request->id,
+            'nama_produk' => $request->nama_produk,
+            'kecepatan' => $request->kecepatan,
+            'harga' => $request->harga,
+            'bandwith' => $request->bandwith,
+        ];
+
+        produk::create($produk);
+
+        return redirect()->route('produk');
     }
 
     /**
