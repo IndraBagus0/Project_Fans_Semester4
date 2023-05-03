@@ -15,61 +15,71 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        No
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Username
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Name
+                                        Nama
                                     </th>
 
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Email
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Address
+                                        Alamat
                                     </th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Action</th>
+                                        Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php($no = 1)
                                 @foreach ($dataUser as $user)
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-3 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $user->username }}</h6>
-                                                </div>
+                                    <td>
+                                        <div class="d-flex px-3 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $no++ }}</h6>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex px-3 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $user->firstname }}</h6>
-                                                </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-3 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $user->username }}</h6>
                                             </div>
-                                        </td>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-3 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $user->firstname }}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
 
-                                        <td>
-                                            <div class="d-flex px-3 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $user->email }}</h6>
-                                                </div>
+                                    <td>
+                                        <div class="d-flex px-3 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $user->email }}</h6>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex px-3 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">{{ $user->address }}</h6>
-                                                </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-3 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $user->address }}</h6>
                                             </div>
-                                        </td>
-                                        <td class="align-middle text-end">
-                                            <div class="d-flex px-3 py-1 justify-content-center align-items-center">
-                                                <p class="text-sm font-weight-bold mb-0">Edit</p>
-                                                <p class="text-sm font-weight-bold mb-0 ps-2">Delete</p>
-                                            </div>
-                                        </td>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-end">
+                                        <div class="d-flex px-3 py-1 justify-content-center align-items-center">
+                                            <p class="text-sm font-weight-bold mb-0">Edit</p>
+                                            <p class="text-sm font-weight-bold mb-0 ps-2">Delete</p>
+                                        </div>
+                                    </td>
                                     </tr>
                                 @endforeach
                             </tbody>

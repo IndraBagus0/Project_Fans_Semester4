@@ -2,10 +2,14 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'produk'])
+
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-md-12 mt-4">
                 <div class="card">
+                    <div id="alert">
+                        @include('components.alert')
+                    </div>
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between">
 
@@ -14,26 +18,6 @@
                                 data-bs-target="#exampleModalTambah">
                                 Tambah Produk
                             </button>
-
-
-                            <!-- Show success or error message after form submission -->
-                            @if (session('success'))
-                                <br>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            @endif
-
-                            @if (session('error'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {{ session('error') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            @endif
-                            {{-- <button type="submit" class="btn btn-primary btn-sm ms-auto">Tambah Produk</button> --}}
                         </div>
                     </div>
                     <div class="card-body pt-4 p-3">

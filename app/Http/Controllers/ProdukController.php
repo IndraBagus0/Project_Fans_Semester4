@@ -46,8 +46,7 @@ class ProdukController extends Controller
         ];
 
         produk::create($produk);
-
-        return redirect()->route('keProduk');
+        return back()->with('succes', 'Produk Berhasil Ditambah');
     }
 
     /**
@@ -96,6 +95,6 @@ class ProdukController extends Controller
 
         // return redirect()->route('keProduk');
         // return response()->json(['status' => 'berhasil']);
-        return back();
+        return back()->with('succes', 'Produk Dihapus');
     }
 }
