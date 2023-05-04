@@ -68,7 +68,10 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produk = Produk::find($id)->first();
+
+
+        return view('barang.form');
     }
 
     /**
@@ -78,11 +81,19 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Produk $produk)
     {
-        //
-    }
+        $request->validate([
+            'nama_produk' => 'required',
+            'kecepatan' => 'required|numeric',
+            'harga_produk' => 'required|numeric',
+            'bandwith' => 'required|numeric',
+        ]);
 
+        $produk->update($request->all());
+
+        return back()->with('succes', 'Produk Diupdate');
+    }
     /**
      * Remove the specified resource from storage.
      *

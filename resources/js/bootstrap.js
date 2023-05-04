@@ -26,3 +26,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+import Swal from 'sweetalert2';
+window.Swal = Swal;
+

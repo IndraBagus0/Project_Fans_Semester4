@@ -39,9 +39,11 @@
                                     <div class="ms-auto text-end">
                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
                                             href="{{ route('produk.hapus', $row->id) }}"><i class="far fa-trash-alt me-2"
-                                                id="hapus"></i>Delete</a>
+                                                id="hapus"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></i>Delete</a>
                                         <a class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModalEdit" href="javascript:;"><i
+                                            data-bs-target="#exampleModalEdit"
+                                            href="{{ route('produk.edit', $row->id) }}"><i
                                                 class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                     </div>
                                 </li>
@@ -62,33 +64,39 @@
                             <div class="card-header pb-0 text-left">
                                 <h3 class="font-weight-bolder text-primary text-gradient">Edit Produk</h3>
                             </div>
-                            <div class="card-body pb-3">
-                                <form role="form text-left">
-                                    <label>Nama</label>
+                            <form action="{{ route('produk.tambah.update', $row->id) }}"
+                                method="POST"role="form text-left">
+                                <div class="card-body pb-3">
+
+
+                                    <label>Nama Produk</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Nama" aria-label="Name"
+                                            name="nama_produk" value="{{ $row->nama_produk }}"
                                             aria-describedby="name-addon">
                                     </div>
                                     <label>Kecepatan</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Kecepatan" aria-label="Name"
-                                            aria-describedby="name-addon">
+                                            name="kecepatan" value="{{ $row->kecepatan }}" aria-describedby="name-addon">
                                     </div>
                                     <label>Harga</label>
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
+                                            name="harga_produk" value="{{ $row->harga_produk }}"
                                             aria-describedby="name-addon">
                                     </div>
                                     <label>Banwith</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="bandwith" aria-label="Name"
-                                            aria-describedby="name-addon">
+                                            name="bandwith" value="{{ $row->bandwith }}" aria-describedby="name-addon">
                                     </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn bg-gradient-primary">Edit</button>
-                            </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn bg-gradient-primary">Edit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -106,7 +114,7 @@
                             </div>
                             <div class="card-body pb-3">
                                 <form role="form text-left" id="produk.tambah" method="POST"
-                                    action="{{ route('produk.tambah') }}">
+                                    action="{{ route('produk.edit') }}">
                                     @csrf
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">

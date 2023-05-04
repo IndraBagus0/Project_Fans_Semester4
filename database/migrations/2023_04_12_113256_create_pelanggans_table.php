@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email_pelanggan', 30)->unique();
             $table->string('password', 15);
             $table->string('nomer_hp', 13);
+            $table->string('alamat', 80);
             $table->string('status', 15);
             $table->date('tanggal_berlangganan');
             $table->string('kode_produk', 7);
