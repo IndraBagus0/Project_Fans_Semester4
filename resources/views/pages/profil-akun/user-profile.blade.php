@@ -87,7 +87,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <input class="form-control" type="text" name="adsress"
+                                        <input class="form-control" type="text" name="address"
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                 </div>

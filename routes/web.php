@@ -1,16 +1,19 @@
 <?php
 
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ResetPassword;
+use App\Http\Controllers\TambahAdminController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,11 +60,26 @@ Route::middleware('auth')->group(function () {
 	// Route Data Admin
 	Route::controller(UsersController::class)->prefix('admin')->group(function () {
 		Route::get('', 'index')->name('keUsers');
-		Route::get('tambah', 'tambah')->name('admin.tambah');
-		Route::post('tambah', 'simpan')->name('admin.tambah.simpan');
 		Route::get('edit/{id}', 'edit')->name('admin.edit');
 		Route::post('edit/{id}', 'update')->name('admin.tambah.update');
 		Route::get('hapus/{id}', 'hapus')->name('admin.hapus');
 	});
-	//route
+	//route Tambah admin
+	Route::controller(TambahAdminController::class)->prefix('TambahAdmin')->group(function () {
+		Route::get('', 'index')->name('keTambahAdmin');
+		Route::get('tambah', 'tambah')->name('admin.tambah');
+		Route::post('tambah', 'simpan')->name('admin.tambah.simpan');
+	});
+	//route Riwayat
+	Route::controller(RiwayatController::class)->prefix('Riwayat')->group(function () {
+		Route::get('', 'index')->name('keRiwayat');
+		Route::get('tambah', 'tambah')->name('riwayat.tambah');
+		Route::post('tambah', 'simpan')->name('riwayat.tambah.simpan');
+	});
+	//route Transaksi
+	Route::controller(TransaksiController::class)->prefix('Transaksi')->group(function () {
+		Route::get('', 'index')->name('keTransaksi');
+		Route::get('tambah', 'tambah')->name('transaksi.tambah');
+		Route::post('tambah', 'simpan')->name('transaksi.tambah.simpan');
+	});
 });
