@@ -64,8 +64,7 @@
                             <div class="card-header pb-0 text-left">
                                 <h3 class="font-weight-bolder text-primary text-gradient">Edit Produk</h3>
                             </div>
-                            <form action="{{ route('produk.tambah.update', $row->id) }}"
-                                method="POST"role="form text-left">
+                            <form action="{{ route('produk.edit', $row->id) }}" method="POST"role="form text-left">
                                 <div class="card-body pb-3">
 
 
@@ -114,7 +113,7 @@
                             </div>
                             <div class="card-body pb-3">
                                 <form role="form text-left" id="produk.tambah" method="POST"
-                                    action="{{ route('produk.edit') }}">
+                                    action="{{ route('produk.tambah') }}">
                                     @csrf
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">
