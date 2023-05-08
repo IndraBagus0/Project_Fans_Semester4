@@ -82,3 +82,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('tambah', 'simpan')->name('transaksi.tambah.simpan');
 	});
 });
+
+
+// git config user.name "indrabagus0"
+//git config user.email "indrabusiness00@gmail.com"
