@@ -81,8 +81,14 @@ Route::middleware('auth')->group(function () {
 		Route::get('tambah', 'tambah')->name('transaksi.tambah');
 		Route::post('tambah', 'simpan')->name('transaksi.tambah.simpan');
 	});
+	// Route Data Pelanggan
+	Route::controller(UsersController::class)->prefix('pelanggan')->group(function () {
+		Route::get('', 'index')->name('kePelanggan');
+		Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
+		Route::post('edit/{id}', 'update')->name('pelanggan.tambah.update');
+		Route::get('hapus/{id}', 'hapus')->name('pelanggan.hapus');
+	});
 });
-
 
 // git config user.name "indrabagus0"
 //git config user.email "indrabusiness00@gmail.com"

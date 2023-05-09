@@ -52,8 +52,8 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link {{ Route::currentRouteName() == 'keUsers' ? 'active' : '' }}"
-                    href="{{ route('keUsers') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'kePelanggan' ? 'active' : '' }}"
+                    href="{{ route('kePelanggan') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-users text-dark text-sm opacity-10"></i>
