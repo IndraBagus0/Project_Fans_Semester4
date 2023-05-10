@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('level_akun', function (Blueprint $table) {
-            $table->integer('id_level')->primary();
-            $table->string('level', 12);
+        Schema::create('product', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name_produc');
+            $table->string('speed');
+            $table->decimal('price', 10, 2);
+            $table->string('bandwith');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('product');
     }
 };

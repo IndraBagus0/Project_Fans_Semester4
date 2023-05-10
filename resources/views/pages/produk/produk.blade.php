@@ -38,9 +38,13 @@
                                     </div>
                                     <div class="ms-auto text-end">
                                         <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="{{ route('produk.hapus', $row->id) }}"><i class="far fa-trash-alt me-2"
-                                                id="hapus"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></i>Delete</a>
+                                            href="{{ route('produk.hapus', $row->id) }}"
+                                            onclick="event.preventDefault();
+                                                 if (confirm('Apakah Anda yakin ingin menghapus produk ini?')) {
+                                                     document.getElementById('hapus-form-{{ $row->id }}').submit();
+                                                 }">
+                                            <i class="far fa-trash-alt me-2"></i>Delete
+                                        </a>
                                         <a class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModalEdit"
                                             href="{{ route('produk.edit', $row->id) }}"><i
@@ -64,10 +68,10 @@
                             <div class="card-header pb-0 text-left">
                                 <h3 class="font-weight-bolder text-primary text-gradient">Edit Produk</h3>
                             </div>
-                            <form action="{{ route('produk.edit', $row->id) }}" method="POST"role="form text-left">
+                            <form action="{{ route('produk.tambah.update', $row->id) }}"
+                                method="POST"role="form text-left">
+                                @csrf
                                 <div class="card-body pb-3">
-
-
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Nama" aria-label="Name"

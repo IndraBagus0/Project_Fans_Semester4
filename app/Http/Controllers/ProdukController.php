@@ -68,10 +68,9 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $produk = Produk::find($id)->first();
+        $produk = Produk::find($id);
 
-
-        return view('barang.form');
+        return view('pages.produk.form_produk', ['produk' => $produk]);
     }
 
     /**
@@ -81,7 +80,7 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produk $produk)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama_produk' => 'required',
@@ -89,8 +88,9 @@ class ProdukController extends Controller
             'harga_produk' => 'required|numeric',
             'bandwith' => 'required|numeric',
         ]);
-
+        $produk = Produk::find($id);
         $produk->update($request->all());
+
 
         return back()->with('succes', 'Produk Diupdate');
     }
