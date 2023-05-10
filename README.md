@@ -1,11 +1,11 @@
 # FANS Project Semester 4 
 
 ## TEAM MEMBER
-1. Rio Javier R (Project Owner)
-2. Fillah Septian (Mobile Programmer)
-3. Indra Bagus Syah Putra (Website Programmer) 
-4. Maulana Malik I (Laporan)
-5. Fans Ach Farros (Tester)
+1. Rio Javier R
+2. Fillah Septian
+3. Indra Bagus Syah Putra 
+4. Maulana Malik I
+5. Fans Ach Farros 
   
 
 ## Installation
