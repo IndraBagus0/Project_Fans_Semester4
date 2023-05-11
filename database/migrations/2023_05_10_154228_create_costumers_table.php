@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone_number', 100)->nullable();
             $table->string('status', 100)->default('nonaktive');
+            $table->string('address', 100)->nullable();
             $table->date('subcribe_date')->Nullable();
             $table->timestamps();
         });
