@@ -22,17 +22,17 @@
                     </div>
                     <div class="card-body pt-4 p-3">
                         <ul class="list-group">
-                            @foreach ($produk as $row)
+                            @foreach ($product as $row)
                                 <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">{{ $row->nama_produk }}</h6>
+                                        <h6 class="mb-3 text-sm">{{ $row->name_product }}</h6>
                                         <span class="mb-2 text-xs">Id: <span
                                                 class="text-dark font-weight-bold ms-sm-2">{{ $row->id }}</span></span>
                                         <span class="mb-2 text-xs">Kecepatan: <span
-                                                class="text-dark ms-sm-2 font-weight-bold">{{ $row->kecepatan }}</span></span>
+                                                class="text-dark ms-sm-2 font-weight-bold">{{ $row->speed }}</span></span>
                                         <span class="mb-2 text-xs">Harga: <span
                                                 class="text-dark ms-sm-2 font-weight-bold">Rp
-                                                {{ $row->harga_produk }}</span></span>
+                                                {{ $row->price }}</span></span>
                                         <span class="text-xs">Bandwith: <span
                                                 class="text-dark ms-sm-2 font-weight-bold">{{ $row->bandwith }}</span></span>
                                     </div>
@@ -59,7 +59,7 @@
         </div>
 
         {{-- modal edit --}}
-        <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        {{-- <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -75,19 +75,18 @@
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Nama" aria-label="Name"
-                                            name="nama_produk" value="{{ $row->nama_produk }}"
+                                            name="name_product" value="{{ $row->name_product }}"
                                             aria-describedby="name-addon">
                                     </div>
                                     <label>Kecepatan</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Kecepatan" aria-label="Name"
-                                            name="kecepatan" value="{{ $row->kecepatan }}" aria-describedby="name-addon">
+                                            name="speed" value="{{ $row->speed }}" aria-describedby="name-addon">
                                     </div>
                                     <label>Harga</label>
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
-                                            name="harga_produk" value="{{ $row->harga_produk }}"
-                                            aria-describedby="name-addon">
+                                            name="price" value="{{ $row->price }}" aria-describedby="name-addon">
                                     </div>
                                     <label>Banwith</label>
                                     <div class="input-group mb-3">
@@ -104,7 +103,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- modal tambah --}}
         <div class="modal fade" id="exampleModalTambah" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalSignTitle" aria-hidden="true">
@@ -122,25 +121,23 @@
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Nama Produk"
-                                            name="nama_produk" id="nama_produk" aria-label="Name"
+                                            name="name_product" id="name_product" aria-label="Name"
                                             aria-describedby="name-addon" required>
                                     </div>
                                     <label>Kecepatan</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Kecepatan"
-                                            name="kecepatan" id="kecepatan" required aria-label="Name"
-                                            aria-describedby="name-addon">
+                                        <input type="text" class="form-control" placeholder="Kecepatan" name="speed"
+                                            id="speed" required aria-label="Name" aria-describedby="name-addon">
                                     </div>
                                     <label>Harga</label>
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
-                                            name="harga_produk" id="harga" required aria-describedby="name-addon">
+                                            name="price" id="price" required aria-describedby="name-addon">
                                     </div>
                                     <label>Banwith</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="bandwith"
-                                            name="bandwith" id="bandwith" required aria-label="Name"
-                                            aria-describedby="name-addon">
+                                        <input type="text" class="form-control" placeholder="bandwith" name="bandwith"
+                                            id="bandwith" required aria-label="Name" aria-describedby="name-addon">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn bg-gradient-primary">Tambah</button>

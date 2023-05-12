@@ -8,7 +8,7 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            {{ auth()->user()->firstname ?? 'Firstname' }}
+                            {{ auth()->user()->name ?? 'name' }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
                             Public Relations
@@ -80,8 +80,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <input class="form-control" type="text" name="firstname"
-                                            value="{{ old('firstname', auth()->user()->firstname) }}">
+                                        <input class="form-control" type="text" name="name"
+                                            value="{{ old('name', auth()->user()->name) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
