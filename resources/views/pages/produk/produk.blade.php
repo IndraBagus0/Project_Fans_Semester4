@@ -76,7 +76,7 @@
                             <form action="{{ route('produk.tambah.update', $row->id) }}"
                                 method="POST"role="form text-left">
                                 @csrf
-                                @method('PUT')
+                                @method('POST')
                                 <div class="card-body pb-3">
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">
