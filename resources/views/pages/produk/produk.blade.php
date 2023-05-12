@@ -37,14 +37,18 @@
                                                 class="text-dark ms-sm-2 font-weight-bold">{{ $row->bandwith }}</span></span>
                                     </div>
                                     <div class="ms-auto text-end">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                        {{-- <a class="btn btn-link text-danger text-gradient px-3 mb-0"
                                             href="{{ route('produk.hapus', $row->id) }}"
                                             onclick="event.preventDefault();
-                                                 if (confirm('Apakah Anda yakin ingin menghapus produk ini?')) {
-                                                     document.getElementById('hapus-form-{{ $row->id }}').submit();
+                                                 if (confirm('Apakah Anda yakin ingin menghapus produk {{ $row->name_product }}?')) {
+                                                     document.getElementById('produk.hapus-{{ $row->id }}').submit();
                                                  }">
                                             <i class="far fa-trash-alt me-2"></i>Delete
-                                        </a>
+                                        </a> --}}
+                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                            onclick="return confirm('Are you sure?')"
+                                            href="{{ route('produk.hapus', $row->id) }}"><i
+                                                class="far fa-trash-alt me-2"></i>Delete</a>
                                         <a class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
                                             data-bs-target="#exampleModalEdit"
                                             href="{{ route('produk.edit', $row->id) }}"><i
@@ -59,11 +63,12 @@
         </div>
 
         {{-- modal edit --}}
-        {{-- <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body p-0">
+
                         <div class="card card-plain">
                             <div class="card-header pb-0 text-left">
                                 <h3 class="font-weight-bolder text-primary text-gradient">Edit Produk</h3>
@@ -71,27 +76,31 @@
                             <form action="{{ route('produk.tambah.update', $row->id) }}"
                                 method="POST"role="form text-left">
                                 @csrf
+                                @method('PUT')
                                 <div class="card-body pb-3">
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Nama" aria-label="Name"
-                                            name="name_product" value="{{ $row->name_product }}"
+                                            name="name_product" value="{{ old('name_product', $row->name_product) }}"
                                             aria-describedby="name-addon">
                                     </div>
                                     <label>Kecepatan</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Kecepatan" aria-label="Name"
-                                            name="speed" value="{{ $row->speed }}" aria-describedby="name-addon">
+                                            name="speed" value="{{ old('speed', $row->speed) }}"
+                                            aria-describedby="name-addon">
                                     </div>
                                     <label>Harga</label>
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
-                                            name="price" value="{{ $row->price }}" aria-describedby="name-addon">
+                                            name="price" value="{{ old('price', $row->price) }}"
+                                            aria-describedby="name-addon">
                                     </div>
                                     <label>Banwith</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="bandwith" aria-label="Name"
-                                            name="bandwith" value="{{ $row->bandwith }}" aria-describedby="name-addon">
+                                            name="bandwith" value="{{ old('bandwith', $row->bandwith) }}"
+                                            aria-describedby="name-addon">
                                     </div>
 
                                 </div>
@@ -100,10 +109,11 @@
                                 </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         {{-- modal tambah --}}
         <div class="modal fade" id="exampleModalTambah" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalSignTitle" aria-hidden="true">
@@ -126,8 +136,9 @@
                                     </div>
                                     <label>Kecepatan</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Kecepatan" name="speed"
-                                            id="speed" required aria-label="Name" aria-describedby="name-addon">
+                                        <input type="text" class="form-control" placeholder="Kecepatan"
+                                            name="speed" id="speed" required aria-label="Name"
+                                            aria-describedby="name-addon">
                                     </div>
                                     <label>Harga</label>
                                     <div class="input-group mb-3">
@@ -136,8 +147,9 @@
                                     </div>
                                     <label>Banwith</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="bandwith" name="bandwith"
-                                            id="bandwith" required aria-label="Name" aria-describedby="name-addon">
+                                        <input type="text" class="form-control" placeholder="bandwith"
+                                            name="bandwith" id="bandwith" required aria-label="Name"
+                                            aria-describedby="name-addon">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn bg-gradient-primary">Tambah</button>
