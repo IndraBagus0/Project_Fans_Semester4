@@ -33,7 +33,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Pelanggan Aktif</p>
                                     <h5 class="font-weight-bolder">
-                                        2,300
+                                        {{ $countActive }}
                                     </h5>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Pelanggan Nonaktive</p>
                                     <h5 class="font-weight-bolder">
-                                        462
+                                        {{ $countNonActive }}
                                     </h5>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total User</p>
                                     <h5 class="font-weight-bolder">
-                                        2,762
+                                        {{ $countCostumer }}
                                     </h5>
 
                                 </div>

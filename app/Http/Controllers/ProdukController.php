@@ -46,7 +46,7 @@ class ProdukController extends Controller
     {
         $product = Produk::find($id);
 
-        return view('pages.produk.form_produk', ['product' => $product]);
+        return view('pages.produk.produk', ['product' => $product]);
     }
 
 

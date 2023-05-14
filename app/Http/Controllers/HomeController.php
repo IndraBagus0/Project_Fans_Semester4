@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Costumer;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Constraint\Count;
 
 class HomeController extends Controller
 {
-        /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard');
+        // $costumer = Costumer::Count();
+        // return view('pages.dashboard', ['costumer' => $costumer]);
+        $countCostumer = Costumer::count();
+        $countActive = Costumer::where('status', 'active')->count();
+        $countNonActive = Costumer::where('status', 'nonactive')->count();
+        return view('pages.dashboard', compact('countCostumer', 'countActive', 'countNonActive'));
     }
 }
