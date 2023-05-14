@@ -34,14 +34,6 @@ class ProdukController extends Controller
         produk::create($product);
         return back()->with('succes', 'Produk Berhasil Ditambah');
     }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
     public function edit($id)
     {
         $product = Produk::find($id);
