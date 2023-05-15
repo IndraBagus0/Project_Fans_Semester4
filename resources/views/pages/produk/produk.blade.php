@@ -73,7 +73,7 @@
                             <div class="card-header pb-0 text-left">
                                 <h3 class="font-weight-bolder text-primary text-gradient">Edit Produk</h3>
                             </div>
-                            <form action="{{ route('produk.tambah.update', $row->id) }}"
+                            <form id="edit_produk_form" action="{{ route('produk.tambah.update', $row->id) }}"
                                 method="POST"role="form text-left">
                                 @csrf
                                 @method('POST')
@@ -81,26 +81,23 @@
                                     <label>Nama Produk</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Nama" aria-label="Name"
-                                            name="name_product" value="{{ old('name_product', $row->name_product) }}"
+                                            name="name_product" value="{{ $row->name_product }}"
                                             aria-describedby="name-addon">
                                     </div>
                                     <label>Kecepatan</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Kecepatan" aria-label="Name"
-                                            name="speed" value="{{ old('speed', $row->speed) }}"
-                                            aria-describedby="name-addon">
+                                            name="speed" value="{{ $row->speed }}" aria-describedby="name-addon">
                                     </div>
                                     <label>Harga</label>
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
-                                            name="price" value="{{ old('price', $row->price) }}"
-                                            aria-describedby="name-addon">
+                                            name="price" value="{{ $row->price }}" aria-describedby="name-addon">
                                     </div>
                                     <label>Banwith</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="bandwith" aria-label="Name"
-                                            name="bandwith" value="{{ old('bandwith', $row->bandwith) }}"
-                                            aria-describedby="name-addon">
+                                            name="bandwith" value="{{ $row->bandwith }}" aria-describedby="name-addon">
                                     </div>
 
                                 </div>
@@ -166,33 +163,18 @@
     </div>
     @include('layouts.footers.auth.footer')
     </div>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript">
-        $(function() {
-                $(document).on('click', '#hapus ', function(e) {
-                    e.preventDefault();
-                    var link = $(this).attr("href");
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
-                        }
-                    })
-                })
+    <script>
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("form[name='edit_produk_form']").validate({
+            // Specify validation rules
+            rules: {
+                name_produk: "required",
+                speed: "required",
+                price: "required",
+                bandwith: "required",
 
-            }
-
-        )
-    </script> --}}
+            },
+        });
+    </script>
 @endsection

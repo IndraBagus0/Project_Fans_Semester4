@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\DataPelangganController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
@@ -82,7 +83,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('tambah', 'simpan')->name('transaksi.tambah.simpan');
 	});
 	// Route Data Pelanggan
-	Route::controller(UsersController::class)->prefix('pelanggan')->group(function () {
+	Route::controller(DataPelangganController::class)->prefix('pelanggan')->group(function () {
 		Route::get('', 'index')->name('kePelanggan');
 		Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
 		Route::post('edit/{id}', 'update')->name('pelanggan.tambah.update');

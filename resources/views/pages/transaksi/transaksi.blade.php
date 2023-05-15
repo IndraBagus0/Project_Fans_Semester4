@@ -14,9 +14,12 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            No</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Pelanggan</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Function</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -35,11 +38,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        {{-- <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm"> 1</h6>
+                                                </div>
+                                            </div>
+                                        </td> --}}
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">1</p>
+
+                                        </td>
                                         <td>
                                             <div class="d-flex px-2 py-1">
-                                                <div>
-                                                    <img src="/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                                                </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">John Michael</h6>
                                                     <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
@@ -75,6 +86,6 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+
     </div>
 @endsection

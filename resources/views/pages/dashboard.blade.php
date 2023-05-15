@@ -38,8 +38,8 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                    <i class="fa fa-users text-lg text-sm opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -59,8 +59,8 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                                    <i class="fa fa-users text-lg text-sm opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total User</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Pelanggan</p>
                                     <h5 class="font-weight-bolder">
                                         {{ $countCostumer }}
                                     </h5>
@@ -81,8 +81,8 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                                    <i class="fa fa-users text-lg text-sm opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Costumer;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
 
@@ -27,9 +27,9 @@ class HomeController extends Controller
     {
         // $costumer = Costumer::Count();
         // return view('pages.dashboard', ['costumer' => $costumer]);
-        $countCostumer = Costumer::count();
-        $countActive = Costumer::where('status', 'active')->count();
-        $countNonActive = Costumer::where('status', 'nonactive')->count();
+        $countCostumer = Customer::count();
+        $countActive = Customer::where('status', 'active')->count();
+        $countNonActive = Customer::where('status', 'nonactive')->count();
         return view('pages.dashboard', compact('countCostumer', 'countActive', 'countNonActive'));
     }
 }

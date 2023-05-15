@@ -35,9 +35,6 @@
             "Faker\\Test\\Fixture\\": "test/Fixture/"
         }
     },
-    "conflict": {
-        "fzaninotto/faker": "*"
-    },
     "suggest": {
         "ext-curl": "Required by Faker\\Provider\\Image to download images.",
         "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
