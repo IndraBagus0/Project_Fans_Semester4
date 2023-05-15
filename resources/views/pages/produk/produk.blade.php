@@ -49,8 +49,8 @@
                                             onclick="return confirm('Are you sure?')"
                                             href="{{ route('produk.hapus', $row->id) }}"><i
                                                 class="far fa-trash-alt me-2"></i>Delete</a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModalEdit"
+                                        <a class="btn btn-link text-dark px-3 mb-0"
+                                            data-bs-toggle="modal{{ $row->id }}" data-bs-target="#exampleModalEdit"
                                             href="{{ route('produk.edit', $row->id) }}"><i
                                                 class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                     </div>
@@ -63,8 +63,8 @@
         </div>
 
         {{-- modal edit --}}
-        <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="exampleModalEdit{{ $row->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body p-0">
