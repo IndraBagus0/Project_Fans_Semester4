@@ -14,71 +14,113 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            No</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Pelanggan</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Function</th>
+                                            No
+                                        </th>
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nama
+                                        </th>
+
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Email
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Alamat
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Status
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tanggal Berlanggan
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Update
+                                        </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Status</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Invoice</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Invoice</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Employed</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                            Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        {{-- <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm"> 1</h6>
-                                                </div>
-                                            </div>
-                                        </td> --}}
+                                    @php($no = 1)
+                                    @foreach ($customer as $user)
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">1</p>
-
-                                        </td>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
+                                            <div class="d-flex px-3 py-1">
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">John Michael</h6>
-                                                    <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                    <h6 class="mb-0 text-sm">{{ $no++ }}</h6>
                                                 </div>
                                             </div>
                                         </td>
+
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">09819378887</p>
+                                            <div class="d-flex px-3 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
 
+                                        <td>
+                                            <div class="d-flex px-3 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $user->email }}</h6>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td>
-                                            <p class="align-middle text-center text-xs font-weight-bold mb-0">jl tamnsari
-                                                bogor</p>
-
+                                            <div class="d-flex px-3 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $user->address }}</h6>
+                                                </div>
+                                            </div>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">Online</span>
+                                        <td>
+                                            <div class="d-flex px-3 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    @if ($user->status == 'active')
+                                                        <span class="badge badge-sm bg-gradient-success">active</span>
+                                                    @elseif ($user->status == 'nonactive')
+                                                        <span class="badge badge-sm bg-gradient-danger">nonactive</span>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
-                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</button>
+                                        <td>
+                                            <div class="d-flex px-3 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    @if ($user->subcribe_date)
+                                                        <h6 class="mb-0 text-sm">{{ $user->subcribe_date }}</h6>
+                                                    @else
+                                                        <h6 class="mb-0 text-sm">Belum berlangganan</h6>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </td>
-
-
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a class="btn btn-link text-primary text-gradient px-3 mb-0"
+                                                    id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                    aria-expanded="false"><i class="fas fa-pencil-alt text-dark me-2"></i>
+                                                    Konfirmasi
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <li><a class="dropdown-item" href="#">Aktifkan</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                </ul>
+                                            </div>
                                         </td>
-                                    </tr>
+                                        <td class="align-middle text-end">
+                                            <div class="d-flex px-3 py-1 justify-content-center align-items-center">
+                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                    onclick="return confirm('Are you sure want to delete {{ $user->name }} ?')"
+                                                    href="{{ route('pelanggan.hapus', $user->id) }}"><i
+                                                        class="far fa-trash-alt me-2"></i>Delete</a>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

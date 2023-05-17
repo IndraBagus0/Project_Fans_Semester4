@@ -73,8 +73,7 @@ Route::middleware('auth')->group(function () {
 	//route Riwayat
 	Route::controller(RiwayatController::class)->prefix('Riwayat')->group(function () {
 		Route::get('', 'index')->name('keRiwayat');
-		Route::get('tambah', 'tambah')->name('riwayat.tambah');
-		Route::post('tambah', 'simpan')->name('riwayat.tambah.simpan');
+		Route::get('hapus/{id}', 'hapus')->name('riwayat.hapus');
 	});
 	//route Transaksi
 	Route::controller(TransaksiController::class)->prefix('Transaksi')->group(function () {

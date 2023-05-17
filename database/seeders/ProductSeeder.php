@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
                 'name_product' => 'Paket Streaming',
                 'price' => 500000,
                 'speed' => "70 Mbps",
-                'bandwith' => 'TB',
+                'bandwith' => '1 TB',
             ],
             [
                 'name_product' => 'Paket Bersahabat',
