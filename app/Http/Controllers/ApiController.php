@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Produk;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ApiController extends Controller
 {
@@ -26,10 +27,9 @@ class ApiController extends Controller
 
         $user = DB::table('users')
             ->where('email', $email)
-            ->where('password', $password)
             ->first();
 
-        if ($user) {
+        if ($user && Hash::check($password, $user->password)) {
             $response = array(
                 'success' => true,
                 'message' => 'Logged in successfully',
@@ -42,7 +42,7 @@ class ApiController extends Controller
         } else {
             $response = array(
                 'success' => false,
-                'message' => 'User not found',
+                'message' => 'User not found or incorrect password',
             );
             return response()->json($response);
         }
