@@ -80,7 +80,7 @@
                                                 <div class="d-flex flex-column justify-content-center">
                                                     @if ($user->status == 'active')
                                                         <span class="badge badge-sm bg-gradient-success">active</span>
-                                                    @elseif ($user->status == 'nonactive')
+                                                    @elseif ($user->status == 'non active')
                                                         <span class="badge badge-sm bg-gradient-danger">nonactive</span>
                                                     @endif
                                                 </div>

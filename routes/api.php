@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DataPelangganController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,6 @@ Route::get('customers-with-product', [ApiController::class, 'getCustomersWithPro
 Route::post('/login', [ApiController::class, 'login']);
 Route::post('/transaction', [ApiController::class, 'transaction']);
 Route::post('/transactionUp', [ApiController::class, 'updateTransaction']);
+
+Route::put('/customers/{id}', [DataPelangganController::class, 'update'])->name('customers.update');
+Route::get('/customers', [DataPelangganController::class, 'index']);

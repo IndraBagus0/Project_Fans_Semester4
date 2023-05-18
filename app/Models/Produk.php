@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Produk extends Model
 {
@@ -13,4 +14,8 @@ class Produk extends Model
     protected $fillable = [
         'name_product', 'speed', 'price', 'bandwith'
     ];
+    public function costumers()
+    {
+        return $this->hasMany(Customer::class, 'id_product');
+    }
 }

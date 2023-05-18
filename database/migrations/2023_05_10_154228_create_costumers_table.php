@@ -16,14 +16,14 @@ return new class extends Migration
     {
         Schema::create('costumer', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->nullable()->default(null);
             $table->string('username', 100)->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone_number', 100)->nullable();
-            $table->string('status', 100)->default('nonaktive');
+            $table->string('status', 100)->default('non active');
             $table->string('address', 100)->nullable();
-            $table->date('subcribe_date')->Nullable();
+            $table->date('subcribe_date')->nullable();
             $table->timestamps();
         });
     }

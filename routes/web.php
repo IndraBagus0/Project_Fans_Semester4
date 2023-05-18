@@ -84,9 +84,9 @@ Route::middleware('auth')->group(function () {
 	// Route Data Pelanggan
 	Route::controller(DataPelangganController::class)->prefix('pelanggan')->group(function () {
 		Route::get('', 'index')->name('kePelanggan');
-		Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
+		Route::put('edit/{id}', 'edit')->name('pelanggan.edit');
 		Route::post('edit/{id}', 'update')->name('pelanggan.tambah.update');
-		Route::get('hapus/{id}', 'hapus')->name('pelanggan.hapus');
+		Route::delete('hapus/{id}', 'hapus')->name('pelanggan.hapus');
 	});
 });
 
