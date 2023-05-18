@@ -23,6 +23,7 @@ Route::get('customers-with-product', [ApiController::class, 'getCustomersWithPro
 Route::post('/login', [ApiController::class, 'login']);
 Route::post('/transaction', [ApiController::class, 'transaction']);
 Route::post('/transactionUp', [ApiController::class, 'updateTransaction']);
-
-Route::put('/customers/{id}', [DataPelangganController::class, 'update'])->name('customers.update');
-Route::get('/customers', [DataPelangganController::class, 'index']);
+Route::post('/register', [ApiController::class, 'register']);
+Route::get('/products', [ApiController::class, 'Produk']);
+Route::post('/loginPelanggan', [ApiController::class, 'LoginPelanggan']);
+Route::get('/riwayat', [ApiController::class, 'getRiwayat']);
