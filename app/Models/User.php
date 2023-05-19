@@ -60,4 +60,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class, 'id_users');
     }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

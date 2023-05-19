@@ -12,8 +12,12 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $customer = Customer::get();
+        // $customer = Customer::get();
         // $customer = Customer::where('status', 'non active')->get();
+        $customer = Customer::with('Product')
+            ->where('status', 'non active')
+            ->get();
+
         return view('pages.transaksi.transaksi', compact('customer'));
     }
     public function edit(Request $request, $id)
@@ -42,23 +46,6 @@ class TransaksiController extends Controller
 
         $customer->save();
 
-        return redirect()->back()->with('succes', 'Status berhasil diperbarui.');
-    }
-
-    public function hapus($id)
-    {
-        // Temukan data yang akan dihapus berdasarkan id
-        $pelanggan = Customer::find($id);
-
-        if (!$pelanggan) {
-            // Tangani jika data tidak ditemukan
-            return redirect()->back()->with('error', 'Transaksi pelanggan tidak ditemukan.');
-        }
-
-        // Hapus data
-        $pelanggan->delete();
-
-        // Redirect dengan pesan sukses
-        return redirect()->back()->with('succes', 'Transaksi pelanggan berhasil dihapus.');
+        return back()->with('succes', 'Berhasil');
     }
 }

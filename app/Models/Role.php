@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use League\CommonMark\Extension\Table\Table;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Role extends Model
 {
-    use HasFactory;
+    protected $table = 'roles';
+
+    public function User()
+    {
+        return $this->hasMany(User::class);
+    }
 }

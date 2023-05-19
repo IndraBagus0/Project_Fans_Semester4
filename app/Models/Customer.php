@@ -21,14 +21,12 @@ class Customer extends Model
         'address',
         'subcribe_date',
     ];
-
-    public function product()
-    {
-        return $this->belongsTo(Produk::class, 'id_product');
-    }
-
     public function transaction()
     {
         return $this->hasMany(Transaction::class, 'id_costumer');
+    }
+    public function product()
+    {
+        return $this->hasMany(Product::class, 'id');
     }
 }

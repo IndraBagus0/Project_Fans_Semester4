@@ -28,14 +28,12 @@
                                             Nama
                                         </th>
 
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Email
-                                        </th>
+
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Alamat
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Status
+                                            Produk
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Tanggal Berlanggan
@@ -65,14 +63,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-
-                                            <td>
-                                                <div class="d-flex px-3 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $user->email }}</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
                                             <td>
                                                 <div class="d-flex px-3 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
@@ -81,16 +71,37 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="d-flex px-3 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        @if ($user->status == 'active')
-                                                            <span class="badge badge-sm bg-gradient-success">active</span>
-                                                        @elseif ($user->status == 'non active')
-                                                            <span class="badge badge-sm bg-gradient-danger">non
-                                                                active</span>
-                                                        @endif
+                                                <form id="status-form-{{ $user->id }}"
+                                                    action="{{ route('transaksi.edit', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="dropdown">
+                                                        @foreach ($user->product as $product)
+                                                            <a class="btn btn-link text-info text-gradient px-3 mb-0"
+                                                                id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <i class="fas fa-pencil-alt text-dark me-2"></i>
+                                                                {{ $product->name_product }}
+                                                            </a>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                                                <li>
+                                                                    <a class="dropdown-item" href="#">
+                                                                        {{ $product->name_product }}
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        @endforeach
                                                     </div>
-                                                </div>
+                                                    <input type="hidden" name="status" id="status-{{ $user->id }}"
+                                                        value="{{ $user->status }}">
+                                                </form>
+                                                <form id="hapus-form-{{ $user->id }}"
+                                                    action="{{ route('pelanggan.hapus', $user->id) }}" method="POST"
+                                                    style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                             </td>
                                             <td>
                                                 <div class="d-flex px-3 py-1">
@@ -103,9 +114,10 @@
                                                     </div>
                                                 </div>
                                             </td>
+
                                             <td>
                                                 <form id="status-form-{{ $user->id }}"
-                                                    action="{{ route('pelanggan.edit', $user->id) }}" method="POST">
+                                                    action="{{ route('transaksi.edit', $user->id) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="dropdown">
@@ -122,13 +134,13 @@
                                                                     Aktifkan
                                                                 </a>
                                                             </li>
-                                                            <li>
+                                                            {{-- <li>
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('pelanggan.hapus', $user->id) }}"
                                                                     onclick="event.preventDefault(); if (confirm('Apakah Anda yakin ingin menghapus transaksi {{ $user->id }}?')) document.getElementById('hapus-form-{{ $user->id }}').submit()">
                                                                     Hapus Transaksi
                                                                 </a>
-                                                            </li>
+                                                            </li> --}}
                                                         </ul>
                                                     </div>
                                                     <input type="hidden" name="status" id="status-{{ $user->id }}"

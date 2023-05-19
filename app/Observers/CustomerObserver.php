@@ -34,7 +34,7 @@ class CustomerObserver
             if (!$existingTransaction) {
                 $transaction = new Transaction();
                 $transaction->date_transaction = now();
-                $transaction->total = 100000; // Atur jumlah total sesuai kebutuhan
+                $transaction->total = 1000; // Atur jumlah total sesuai kebutuhan
 
                 // Menggunakan ID user dari session login
                 $transaction->users = Auth::id();

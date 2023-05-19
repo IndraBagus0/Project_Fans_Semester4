@@ -17,37 +17,37 @@ class DataPelangganController extends Controller
         return view('pages.data-pelanggan.data-pelanggan', compact('customer'));
     }
 
-    public function edit(Request $request, $id)
-    {
-        $customer = Customer::find($id);
-        $customer->status = $request->input('status');
+    // public function edit(Request $request, $id)
+    // {
+    //     $customer = Customer::find($id);
+    //     $customer->status = $request->input('status');
 
-        if ($customer->status === 'active') {
-            // Atur tanggal subscribe menjadi tanggal sekarang
-            $customer->subcribe_date = Carbon::now()->toDateString();
+    //     if ($customer->status === 'active') {
+    //         // Atur tanggal subscribe menjadi tanggal sekarang
+    //         $customer->subcribe_date = Carbon::now()->toDateString();
 
-            // Tambahkan 30 hari ke tanggal sekarang
-            // $expireDate = Carbon::now()->addDays(30)->toDateString();
+    //         // Tambahkan 30 hari ke tanggal sekarang
+    //         // $expireDate = Carbon::now()->addDays(30)->toDateString();
 
-            // Tambahkan 1 menit ke tanggal sekarang
-            $expireDate = Carbon::now()->addMinutes(1)->toDateString();
+    //         // Tambahkan 1 menit ke tanggal sekarang
+    //         $expireDate = Carbon::now()->addMinutes(1)->toDateString();
 
-            // Buat schedule untuk mengubah status menjadi non active setelah 30 hari
-            Schedule::create([
-                'customer_id' => $customer->id,
-                'status' => 'non active',
-                'expire_date' => $expireDate,
-            ]);
-        } else {
-            // Hapus schedule jika status bukan active
-            Schedule::where('customer_id', $customer->id)->delete();
-            $customer->subcribe_date = null;
-        }
+    //         // Buat schedule untuk mengubah status menjadi non active setelah 30 hari
+    //         Schedule::create([
+    //             'customer_id' => $customer->id,
+    //             'status' => 'non active',
+    //             'expire_date' => $expireDate,
+    //         ]);
+    //     } else {
+    //         // Hapus schedule jika status bukan active
+    //         Schedule::where('customer_id', $customer->id)->delete();
+    //         $customer->subcribe_date = null;
+    //     }
 
-        $customer->save();
+    //     $customer->save();
 
-        return redirect()->back()->with('success', 'Status berhasil diperbarui.');
-    }
+    //     return redirect()->back()->with('success', 'Status berhasil diperbarui.');
+    // }
 
     public function hapus($id)
     {

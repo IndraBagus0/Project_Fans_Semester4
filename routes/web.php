@@ -67,8 +67,8 @@ Route::middleware('auth')->group(function () {
 	//route Tambah admin
 	Route::controller(TambahAdminController::class)->prefix('TambahAdmin')->group(function () {
 		Route::get('', 'index')->name('keTambahAdmin');
-		Route::get('tambah', 'tambah')->name('admin.tambah');
-		Route::post('tambah', 'simpan')->name('admin.tambah.simpan');
+		Route::get('/admin/add', 'create')->name('admin.add');
+		Route::post('/admin/store', 'store')->name('admin.store');
 	});
 	//route Riwayat
 	Route::controller(RiwayatController::class)->prefix('Riwayat')->group(function () {
@@ -80,6 +80,9 @@ Route::middleware('auth')->group(function () {
 		Route::get('', 'index')->name('keTransaksi');
 		Route::get('tambah', 'tambah')->name('transaksi.tambah');
 		Route::post('tambah', 'simpan')->name('transaksi.tambah.simpan');
+		Route::put('edit/{id}', 'edit')->name('transaksi.edit');
+		Route::post('edit/{id}', 'update')->name('transaksi.tambah.update');
+		Route::delete('hapus/{id}', 'hapus')->name('transaksi.hapus');
 	});
 	// Route Data Pelanggan
 	Route::controller(DataPelangganController::class)->prefix('pelanggan')->group(function () {
