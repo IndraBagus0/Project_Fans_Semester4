@@ -80,8 +80,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function hapus($id)
     {
-        //
+        User::find($id)->delete();
+
+        // return redirect()->route('keProduk');
+        // return response()->json(['status' => 'berhasil']);
+        return back()->with('succes', 'Admin Dihapus');
     }
 }

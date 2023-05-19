@@ -6,6 +6,9 @@
         <div class="col-12">
 
             <div class="card mb-4">
+                <div id="alert">
+                    @include('components.alert')
+                </div>
                 <div class="card-header pb-0">
                     <h6>Users</h6>
                 </div>
@@ -76,8 +79,15 @@
                                     </td>
                                     <td class="align-middle text-end">
                                         <div class="d-flex px-3 py-1 justify-content-center align-items-center">
-                                            <p class="text-sm font-weight-bold mb-0">Edit</p>
-                                            <p class="text-sm font-weight-bold mb-0 ps-2">Delete</p>
+                                            <form action="{{ route('admin.hapus', $user->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                    onclick="return confirm('Are you sure {{ $user->name }}?')">
+                                                    <i class="far fa-trash-alt me-2"></i>Delete
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                     </tr>

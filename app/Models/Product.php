@@ -13,6 +13,6 @@ class Product extends Model
 
     public function customers()
     {
-        return $this->hasMany(Customer::class, 'id_product', 'id');
+        return $this->hasMany(Customer::class, 'id_product');
     }
 }

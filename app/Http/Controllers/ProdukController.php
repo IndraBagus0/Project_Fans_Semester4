@@ -41,7 +41,6 @@ class ProdukController extends Controller
         return view('pages.produk.produk', ['product' => $product]);
     }
 
-
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -50,13 +49,16 @@ class ProdukController extends Controller
             'price' => 'required|numeric',
             'bandwith' => 'required|numeric',
         ]);
+
         $product = Produk::find($id);
-        $product->update($request->all());
+        $product->name_product = $request->name_product;
+        $product->speed = $request->speed;
+        $product->price = $request->price;
+        $product->bandwith = $request->bandwith;
+        $product->save();
 
-
-        return back()->with('succes', 'Produk Diupdate');
+        return back()->with('success', 'Produk Diupdate');
     }
-
     public function hapus($id)
     {
         Produk::find($id)->delete();

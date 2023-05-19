@@ -10,12 +10,11 @@
                         @csrf
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Edit Profile</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Add</button>
+                                <p class="mb-0">Tambah Admin</p>
+                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Tambah</button>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="text-uppercase text-sm">User Information</p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

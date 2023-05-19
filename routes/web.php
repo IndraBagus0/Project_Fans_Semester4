@@ -53,16 +53,16 @@ Route::middleware('auth')->group(function () {
 		Route::get('', 'index')->name('keProduk');
 		Route::get('tambah', 'tambah')->name('produk.tambah');
 		Route::post('tambah', 'simpan')->name('produk.tambah.simpan');
-		Route::get('edit/{id}', 'edit')->name('produk.edit');
-		Route::post('edit/{id}', 'update')->name('produk.tambah.update');
-		Route::get('hapus/{id}', 'hapus')->name('produk.hapus');
+		Route::get('/produk/{id}/edit', 'edit')->name('produk.edit');
+		Route::put('/produk/{id}', 'update')->name('produk.update');
+		Route::delete('/produk/{id}', 'hapus')->name('produk.hapus');
 	});
 	// Route Data Admin
 	Route::controller(UsersController::class)->prefix('admin')->group(function () {
 		Route::get('', 'index')->name('keUsers');
 		Route::get('edit/{id}', 'edit')->name('admin.edit');
 		Route::post('edit/{id}', 'update')->name('admin.tambah.update');
-		Route::get('hapus/{id}', 'hapus')->name('admin.hapus');
+		Route::delete('hapus/{id}', 'hapus')->name('admin.hapus');
 	});
 	//route Tambah admin
 	Route::controller(TambahAdminController::class)->prefix('TambahAdmin')->group(function () {

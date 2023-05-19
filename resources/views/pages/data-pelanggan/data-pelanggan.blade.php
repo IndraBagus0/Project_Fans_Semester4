@@ -99,10 +99,15 @@
                                         </td>
                                         <td class="align-middle text-end">
                                             <div class="d-flex px-3 py-1 justify-content-center align-items-center">
-                                                <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                    onclick="return confirm('Are you sure want to delete {{ $user->name }} ?')"
-                                                    href="{{ route('pelanggan.hapus', $user->id) }}"><i
-                                                        class="far fa-trash-alt me-2"></i>Delete</a>
+                                                <form action="{{ route('admin.hapus', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                        onclick="return confirm('Are you sure {{ $user->name }}?')">
+                                                        <i class="far fa-trash-alt me-2"></i>Delete
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                         </tr>

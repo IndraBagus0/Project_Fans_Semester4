@@ -86,7 +86,8 @@
                                                         @if ($user->status == 'active')
                                                             <span class="badge badge-sm bg-gradient-success">active</span>
                                                         @elseif ($user->status == 'non active')
-                                                            <span class="badge badge-sm bg-gradient-danger">nonactive</span>
+                                                            <span class="badge badge-sm bg-gradient-danger">non
+                                                                active</span>
                                                         @endif
                                                     </div>
                                                 </div>

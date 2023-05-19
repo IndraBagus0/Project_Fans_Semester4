@@ -21,7 +21,7 @@ class RoleSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $data = [
-            'super_admin', 'admin'
+            'super_admin', 'admin', 'teknisi'
         ];
 
         foreach ($data as $value) {
