@@ -12,7 +12,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Pendapatan</p>
                                     <h5 class="font-weight-bolder">
-                                        Rp. 2.999.953,00
+                                        Rp. 9.999.953,00
                                     </h5>
                                 </div>
                             </div>

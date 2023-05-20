@@ -5,46 +5,43 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Contracts\Validation\Rule;
 
 class TambahAdminController extends Controller
 {
-
     public function index()
     {
-        $roles = Role::all(); // Mengambil semua data roles dari model Role (asumsikan model Role digunakan untuk tabel roles)
-        return view('pages.tambah-admin.tambah-admin', ['roles' => $roles]);
+        $roles = Role::all();
+        return view('pages.tambah-admin.tambah-admin', compact('roles'));
     }
+
+    public function create()
+    {
+        $roles = Role::all();
+
+        return view('pages.tambah-admin.tambah-admin', compact('roles'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'address' => 'required',
-            'roles' => 'required|array',
-            'roles.*' => 'exists:roles,id',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:5|confirmed',
+            'role' => 'required|exists:roles,id',
+            'address' => 'required|string|max:100',
         ]);
 
-        try {
-            $admin = new User();
-            $admin->name = $request->input('name');
-            $admin->username = $request->input('username');
-            $admin->email = $request->input('email');
-            $admin->password = Hash::make($request->input('password'));
-            $admin->address = $request->input('address');
-            $admin->save();
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->username = $request->input('username');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->roles = $request->input('role'); // Menggunakan role_id sebagai nama kolom
+        $user->address = $request->input('address');
+        $user->save();
 
-            $roles = $request->input('roles', []);
-
-            $admin->roles()->sync($roles);
-
-            return 'Admin user added successfully!';
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
+        return redirect()->route('keTambahAdmin')->with('succes', 'Admin berhasil ditambahkan.');
     }
 }
