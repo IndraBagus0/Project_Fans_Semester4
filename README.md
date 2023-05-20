@@ -24,11 +24,18 @@
    ```
    ```console
    php artisan migrate
-   or
-   php artisan migrate:refresh
    ```
    ```console
-   php artisan db:seed
+   php artisan db:seed --class=RoleSeeder
+   ```
+   ```console
+   php artisan db:seed --class=DatabaseSeeder
+   ```
+   ```console
+   php artisan db:seed --class=ProductSeeder
+   ```
+   ```console
+   php artisan db:seed --class=CustomerSeeder
    ```
 
 3. Run server
