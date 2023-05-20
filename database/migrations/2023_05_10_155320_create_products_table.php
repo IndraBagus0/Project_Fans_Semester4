@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('speed');
             $table->decimal('price', 10, 2);
             $table->string('bandwith');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

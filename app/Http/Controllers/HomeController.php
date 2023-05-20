@@ -29,7 +29,7 @@ class HomeController extends Controller
         // return view('pages.dashboard', ['costumer' => $costumer]);
         $countCostumer = Customer::count();
         $countActive = Customer::where('status', 'active')->count();
-        $countNonActive = Customer::where('status', 'nonactive')->count();
+        $countNonActive = Customer::where('status', 'non active')->count();
         return view('pages.dashboard', compact('countCostumer', 'countActive', 'countNonActive'));
     }
 }

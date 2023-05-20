@@ -11,9 +11,8 @@ class Produk extends Model
     use HasFactory;
     protected $table = 'product';
     protected $primaryKey = 'id';
-    protected $fillable = [
-        'name_product', 'speed', 'price', 'bandwith'
-    ];
+    protected $fillable = ['name_product', 'speed', 'price', 'bandwith', 'foto'];
+
     public function costumers()
     {
         return $this->hasMany(Customer::class, 'id_product');

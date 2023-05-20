@@ -35,6 +35,12 @@
                                                 {{ $product->price }}</span></span>
                                         <span class="text-xs">Bandwith: <span
                                                 class="text-dark ms-sm-2 font-weight-bold">{{ $product->bandwith }}</span></span>
+                                        <span class="text-xs">Qr</span>
+                                        <span>
+
+                                            <img src="{{ url('/storage/foto_produk/' . $product->foto) }}"
+                                                alt="Foto Produk">
+                                        </span>
                                     </div>
                                     <div class="ms-auto text-end">
                                         {{-- <a class="btn btn-link text-danger text-gradient px-3 mb-0"
@@ -102,6 +108,8 @@
                                         <input type="text" class="form-control" placeholder="bandwith" aria-label="Name"
                                             name="bandwith" value="{{ $product->bandwith }}" aria-describedby="name-addon">
                                     </div>
+
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn bg-gradient-primary">Edit</button>
@@ -124,35 +132,38 @@
                             </div>
                             <div class="card-body pb-3">
                                 <form role="form text-left" id="produk.tambah" method="POST"
-                                    action="{{ route('produk.tambah') }}">
+                                    action="{{ route('produk.tambah') }}" enctype="multipart/form-data">
                                     @csrf
-                                    <label>Nama Produk</label>
+                                    <label for="name_product">Nama Produk</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Nama Produk"
-                                            name="name_product" id="name_product" aria-label="Name"
-                                            aria-describedby="name-addon" required>
+                                            name="name_product" id="name_product" required>
                                     </div>
-                                    <label>Kecepatan</label>
+                                    <label for="speed">Kecepatan</label>
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="Kecepatan"
-                                            name="speed" id="speed" required aria-label="Name"
-                                            aria-describedby="name-addon">
+                                            name="speed" id="speed" required>
                                     </div>
-                                    <label>Harga</label>
+                                    <label for="price">Harga</label>
                                     <div class="input-group mb-3">
-                                        <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
-                                            name="price" id="price" required aria-describedby="name-addon">
+                                        <input type="number" class="form-control" placeholder="Harga" name="price"
+                                            id="price" required>
                                     </div>
-                                    <label>Banwith</label>
+                                    <label for="bandwith">Bandwith</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="bandwith"
-                                            name="bandwith" id="bandwith" required aria-label="Name"
-                                            aria-describedby="name-addon">
+                                        <input type="text" class="form-control" placeholder="Bandwith"
+                                            name="bandwith" id="bandwith" required>
+                                    </div>
+                                    <label for="foto">Foto</label>
+                                    <div class="input-group mb-3">
+                                        <input type="file" class="form-control" name="foto" id="foto"
+                                            required>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn bg-gradient-primary">Tambah</button>
                                     </div>
                                 </form>
+
                             </div>
 
                         </div>

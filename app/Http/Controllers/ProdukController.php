@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Produk;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProdukController extends Controller
 {
@@ -23,16 +24,33 @@ class ProdukController extends Controller
 
     public function simpan(Request $request)
     {
-        $product = [
-            'id' => $request->id,
-            'name_product' => $request->name_product,
-            'speed' => $request->speed,
-            'price' => $request->price,
-            'bandwith' => $request->bandwith,
-        ];
+        $request->validate([
+            'name_product' => 'required',
+            'speed' => 'required',
+            'price' => 'required',
+            'bandwith' => 'required',
+            'foto' => 'required|image|max:2048', // Validasi file foto sebagai gambar maksimal 2MB
+        ]);
 
-        produk::create($product);
-        return back()->with('succes', 'Produk Berhasil Ditambah');
+        // Mendapatkan file yang diunggah dari input form
+        $file = $request->file('foto');
+
+        // Membuat nama file baru dengan timestamp
+        $namaFile = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+
+        // Menyimpan file ke direktori public/storage/foto_produk dengan nama file baru
+        $path = $file->storeAs('foto_produk', $namaFile, 'public');
+
+        // Menyimpan data produk beserta nama file foto ke dalam database
+        $product = new Produk();
+        $product->name_product = $request->input('name_product');
+        $product->speed = $request->input('speed');
+        $product->price = $request->input('price');
+        $product->bandwith = $request->input('bandwith');
+        $product->foto = $namaFile;
+        $product->save();
+
+        return redirect()->route('keProduk')->with('succes', 'Produk berhasil ditambahkan.');
     }
     public function edit($id)
     {
