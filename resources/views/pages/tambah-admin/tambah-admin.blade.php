@@ -6,7 +6,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-
+                    <div id="alert">
+                        @include('components.alert')
+                    </div>
                     <form method="POST" action="{{ route('admin.store') }}">
                         @csrf
                         <div class="card-header pb-0">

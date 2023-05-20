@@ -31,6 +31,9 @@
                                         Email
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Level
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Alamat
                                     </th>
                                     <th
@@ -69,6 +72,23 @@
                                                 <h6 class="mb-0 text-sm">{{ $user->email }}</h6>
                                             </div>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-3 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                @if ($user->roles == '1')
+                                                    <h6 class="mb-0 text-sm">Super Admin</h6>
+                                                @elseif ($user->roles == '2')
+                                                    <h6 class="mb-0 text-sm"> Admin</h6>
+                                                @elseif ($user->roles == '3')
+                                                    <h6 class="mb-0 text-sm"> Teknisi</h6>
+                                                @endif
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+
+                                            </div>
+                                        </div>
+
                                     </td>
                                     <td>
                                         <div class="d-flex px-3 py-1">
