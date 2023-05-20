@@ -25,24 +25,28 @@ class ProductSeeder extends Seeder
                 'price' => 1250000,
                 'speed' => '200 Mbps',
                 'bandwith' => 'Unlimited',
+                'foto' => '1684574033_qESRSITE.jpeg',
             ],
             [
                 'name_product' => 'Paket Gamers',
                 'price' => 750000,
                 'speed' => '100 Mbps',
                 'bandwith' => 'Unlimited',
+                'foto' => '1684574033_qESRSITE.jpeg',
             ],
             [
                 'name_product' => 'Paket Streaming',
                 'price' => 500000,
                 'speed' => "70 Mbps",
                 'bandwith' => '1 TB',
+                'foto' => '1684574033_qESRSITE.jpeg',
             ],
             [
                 'name_product' => 'Paket Bersahabat',
                 'price' => 200000,
                 'speed' => '30 Mbps',
                 'bandwith' => '500 Gb',
+                'foto' => '1684574033_qESRSITE.jpeg',
             ],
         ];
 

@@ -35,11 +35,16 @@
                                                 {{ $product->price }}</span></span>
                                         <span class="text-xs">Bandwith: <span
                                                 class="text-dark ms-sm-2 font-weight-bold">{{ $product->bandwith }}</span></span>
-                                        <span class="text-xs">Qr</span>
-                                        <span>
-
-                                            <img src="{{ url('/storage/foto_produk/' . $product->foto) }}"
-                                                alt="Foto Produk">
+                                        <span class="text-xs">
+                                            Qr:
+                                            @if ($product->foto)
+                                                <a href="{{ asset('storage/foto_produk/' . $product->foto) }}"
+                                                    target="_blank">
+                                                    <span class="text-dark ms-sm-2 font-weight-bold">Lihat Foto</span>
+                                                </a>
+                                            @else
+                                                <span class="text-dark ms-sm-2 font-weight-bold">Tidak Ada QR Code</span>
+                                            @endif
                                         </span>
                                     </div>
                                     <div class="ms-auto text-end">
@@ -175,18 +180,4 @@
     </div>
     @include('layouts.footers.auth.footer')
     </div>
-    <script>
-        // Initialize form validation on the registration form.
-        // It has the name attribute "registration"
-        $("form[name='edit_produk_form']").validate({
-            // Specify validation rules
-            rules: {
-                name_produk: "required",
-                speed: "required",
-                price: "required",
-                bandwith: "required",
-
-            },
-        });
-    </script>
 @endsection
