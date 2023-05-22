@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\DataPelangganController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +26,6 @@ Route::post('/register', [ApiController::class, 'register']);
 Route::get('/products', [ApiController::class, 'Produk']);
 Route::post('/loginPelanggan', [ApiController::class, 'LoginPelanggan']);
 Route::get('/riwayat', [ApiController::class, 'getRiwayat']);
+Route::post('/updateProfil', [ApiController::class, 'updateProfil']);
+Route::post('/updatePassword', [ApiController::class, 'updatePassword']);
+Route::post('/tes', [ApiController::class, 'store']);

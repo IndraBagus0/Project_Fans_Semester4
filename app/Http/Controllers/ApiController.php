@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Produk;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,9 +28,10 @@ class ApiController extends Controller
 
         $user = DB::table('users')
             ->where('email', $email)
+            ->where('roles', 3) // Memeriksa apakah role adalah 3
             ->first();
 
-        if ($user && Hash::check($password, $user->password)) {
+        if ($user && password_verify($password, $user->password)) {
             $response = array(
                 'success' => true,
                 'message' => 'Logged in successfully',
@@ -68,19 +70,20 @@ class ApiController extends Controller
     public function updateTransaction()
     {
         $id = request()->input('id');
-
-        DB::table('costumer')->where('id', $id)->update(['status' => 'active']);
+        $date = date("Y-m-d");
+        DB::table('costumer')->where('id', $id)->update(['status' => 'active','subcribe_date' => $date]);
 
         echo "Data Updated";
     }
+
     public function register()
     {
         $username = request()->input('username');
         $email = request()->input('email');
-        $password = request()->input('password');
+        $password = Hash::make(request()->input('password'));
         $phone_number = request()->input('phone_number');
         $address = request()->input('address');
-
+        $date = date("Y-m-d");
         DB::table('costumer')->insert([
             'name' => $username,
             'username' => $username,
@@ -89,8 +92,8 @@ class ApiController extends Controller
             'phone_number' => $phone_number,
             'status' => 'non active',
             'address' => $address,
-            'id_product' => 1,
-            'subcribe_date' => '2023-05-08',
+            'id_product' => 6,
+            'subcribe_date' => $date,
         ]);
 
         echo "Data Berhasil di Simpan";
@@ -107,23 +110,33 @@ class ApiController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        // Query untuk mencari pengguna berdasarkan email dan password
+        // Query untuk mencari pengguna berdasarkan email
         $user = DB::table('costumer')
             ->join('product', 'costumer.id_product', '=', 'product.id')
-            ->select('costumer.status', 'costumer.name', 'costumer.id', 'product.name_product')
+            ->select('costumer.*', 'product.name_product')
             ->where('costumer.email', $email)
-            ->where('costumer.password', $password)
             ->first();
 
         if ($user) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Logged in successfully',
-                'status' => $user->status,
-                'name' => $user->name,
-                'id' => $user->id,
-                'name_product' => $user->name_product,
-            ]);
+            // Memeriksa kecocokan password menggunakan Hash::check()
+            if (Hash::check($password, $user->password)) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Logged in successfully',
+                    'status' => $user->status,
+                    'name' => $user->name,
+                    'id' => $user->id,
+                    'name_product' => $user->name_product,
+                    'email' => $user->email,
+                    'address' => $user->address,
+                    'phone_number' => $user->phone_number,
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invalid password',
+                ]);
+            }
         } else {
             return response()->json([
                 'success' => false,
@@ -143,4 +156,53 @@ class ApiController extends Controller
 
         return response()->json($riwayat);
     }
+
+    public function updateProfil()
+    {
+        $id = request()->input('id');
+        $name = request()->input('name');
+        $email = request()->input('email');
+        $phone_number = request()->input('phone_number');
+        $address = request()->input('address');
+
+        DB::table('costumer')->where('id', $id)->update([
+            'name' => $name,
+            'username' => $name,
+            'email' => $email,
+            'phone_number' => $phone_number,
+            'address' => $address
+        ]);
+
+        return "Data Updated";
+    }
+
+    public function updatePassword()
+    {
+        $id = request()->input('id');
+        $password = request()->input('password');
+    
+        $hashedPassword = Hash::make($password);
+    
+        DB::table('costumer')->where('id', $id)->update([
+            'password' => $hashedPassword,
+        ]);
+    
+        return "Data Updated";
+    }
+    public function store(Request $request)
+    {
+        $user = [
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'roles' => $request->input('roles'), // Menggunakan role_id sebagai nama kolom
+            'address' => $request->input('address')
+        ];
+    
+        DB::table('users')->insert($user);
+    
+        return response()->json(['message' => 'Admin berhasil ditambahkan.'], 201);
+    }
+
 }

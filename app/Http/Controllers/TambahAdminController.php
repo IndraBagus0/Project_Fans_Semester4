@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class TambahAdminController extends Controller
@@ -33,14 +34,16 @@ class TambahAdminController extends Controller
             'address' => 'required|string|max:100',
         ]);
 
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->username = $request->input('username');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->roles = $request->input('role'); // Menggunakan role_id sebagai nama kolom
-        $user->address = $request->input('address');
-        $user->save();
+        $user = [
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'roles' => $request->input('role'), // Menggunakan role_id sebagai nama kolom
+            'address' => $request->input('address')
+        ];
+    
+        DB::table('users')->insert($user);
 
         return redirect()->route('keTambahAdmin')->with('succes', 'Admin berhasil ditambahkan.');
     }
