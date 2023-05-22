@@ -37,6 +37,9 @@
    ```console
    php artisan db:seed --class=CustomerSeeder
    ```
+   ```console
+   php artisan storage:link
+   ```
 
 3. Run server
    ```console
