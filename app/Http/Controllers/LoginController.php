@@ -28,13 +28,22 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+            if ($user->roles == 1 || $user->roles == 2) {
+                // Pengguna dengan roles 1 dan 2 dapat login
+                $request->session()->regenerate();
+                return redirect()->intended('dashboard');
+            } else {
+                // Pengguna dengan roles 3 tidak dapat login
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Teknisi Tidak Memiliki Hak Akses Ke Halaman Admin.',
+                ]);
+            }
         }
 
         return back()->withErrors([
-            'email' => 'Wrong input email.',
+            'email' => 'Email atau password salah.',
         ]);
     }
 
