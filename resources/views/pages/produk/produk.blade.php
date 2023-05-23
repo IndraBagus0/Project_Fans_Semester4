@@ -64,8 +64,7 @@
                                                 <i class="far fa-trash-alt me-2"></i>Delete
                                             </button>
                                         </form>
-                                        <a class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModalEdit{{ $product->id }}"
+                                        <a class="btn btn-link text-dark px-3 mb-0"
                                             href="{{ route('produk.edit', $product->id) }}"><i
                                                 class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
                                     </div>
@@ -76,106 +75,57 @@
                 </div>
             </div>
         </div>
-
-        {{-- modal edit --}}
-        <div class="modal fade" id="exampleModalEdit{{ $product->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body p-0">
-                        <div class="card card-plain">
-                            <div class="card-header pb-0 text-left">
-                                <h3 class="font-weight-bolder text-primary text-gradient">Edit Produk</h3>
-                            </div>
-                            <form id="edit_produk_form" action="{{ route('produk.update', $product->id) }}" method="POST"
-                                role="form text-left">
+    </div>
+    {{-- modal tambah --}}
+    <div class="modal fade" id="exampleModalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="card card-plain">
+                        <div class="card-header pb-0 text-left">
+                            <h3 class="font-weight-bolder text-primary text-gradient">Tambah Produk</h3>
+                        </div>
+                        <div class="card-body pb-3">
+                            <form role="form text-left" id="produk.tambah" method="POST"
+                                action="{{ route('produk.tambah') }}" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
-                                <div class="card-body pb-3">
-                                    <label>Nama Produk</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Nama" aria-label="Name"
-                                            name="name_product" value="{{ $product->name_product }}"
-                                            aria-describedby="name-addon">
-                                    </div>
-                                    <label>Kecepatan</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Kecepatan" aria-label="Name"
-                                            name="speed" value="{{ $product->speed }}" aria-describedby="name-addon">
-                                    </div>
-                                    <label>Harga</label>
-                                    <div class="input-group mb-3">
-                                        <input type="number" class="form-control" placeholder="Harga" aria-label="Name"
-                                            name="price" value="{{ $product->price }}" aria-describedby="name-addon">
-                                    </div>
-                                    <label>Banwith</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="bandwith" aria-label="Name"
-                                            name="bandwith" value="{{ $product->bandwith }}" aria-describedby="name-addon">
-                                    </div>
-
-
+                                <label for="name_product">Nama Produk</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Nama Produk" name="name_product"
+                                        id="name_product" required>
+                                </div>
+                                <label for="speed">Kecepatan</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Kecepatan" name="speed"
+                                        id="speed" required>
+                                </div>
+                                <label for="price">Harga</label>
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" placeholder="Harga" name="price"
+                                        id="price" required>
+                                </div>
+                                <label for="bandwith">Bandwith</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Bandwith" name="bandwith"
+                                        id="bandwith" required>
+                                </div>
+                                <label for="foto">Foto</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="foto" id="foto" required>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn bg-gradient-primary">Edit</button>
+                                    <button type="submit" class="btn bg-gradient-primary">Tambah</button>
                                 </div>
                             </form>
+
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        {{-- modal tambah --}}
-        <div class="modal fade" id="exampleModalTambah" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalSignTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-                <div class="modal-content">
-                    <div class="modal-body p-0">
-                        <div class="card card-plain">
-                            <div class="card-header pb-0 text-left">
-                                <h3 class="font-weight-bolder text-primary text-gradient">Tambah Produk</h3>
-                            </div>
-                            <div class="card-body pb-3">
-                                <form role="form text-left" id="produk.tambah" method="POST"
-                                    action="{{ route('produk.tambah') }}" enctype="multipart/form-data">
-                                    @csrf
-                                    <label for="name_product">Nama Produk</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Nama Produk"
-                                            name="name_product" id="name_product" required>
-                                    </div>
-                                    <label for="speed">Kecepatan</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Kecepatan"
-                                            name="speed" id="speed" required>
-                                    </div>
-                                    <label for="price">Harga</label>
-                                    <div class="input-group mb-3">
-                                        <input type="number" class="form-control" placeholder="Harga" name="price"
-                                            id="price" required>
-                                    </div>
-                                    <label for="bandwith">Bandwith</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Bandwith"
-                                            name="bandwith" id="bandwith" required>
-                                    </div>
-                                    <label for="foto">Foto</label>
-                                    <div class="input-group mb-3">
-                                        <input type="file" class="form-control" name="foto" id="foto"
-                                            required>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn bg-gradient-primary">Tambah</button>
-                                    </div>
-                                </form>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
     </div>
     @include('layouts.footers.auth.footer')

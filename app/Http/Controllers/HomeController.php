@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
 
@@ -30,6 +31,7 @@ class HomeController extends Controller
         $countCostumer = Customer::count();
         $countActive = Customer::where('status', 'active')->count();
         $countNonActive = Customer::where('status', 'non active')->count();
-        return view('pages.dashboard', compact('countCostumer', 'countActive', 'countNonActive'));
+        $pendapatan = Transaction::sum('total');
+        return view('pages.dashboard', compact('countCostumer', 'countActive', 'countNonActive', 'pendapatan'));
     }
 }

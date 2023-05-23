@@ -29,7 +29,16 @@
 
     @auth
         @if (in_array(request()->route()->getName(),
-                ['sign-in-static', 'sign-up-static', 'login', 'register', 'recover-password', 'rtl', 'virtual-reality']))
+                [
+                    'sign-in-static',
+                    'sign-up-static',
+                    'login',
+                    'register',
+                    'recover-password',
+                    //tes
+                    'rtl',
+                    'virtual-reality',
+                ]))
             @yield('content')
         @else
             @if (
