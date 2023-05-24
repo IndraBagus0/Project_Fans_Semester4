@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Produk;
+use App\Models\Schedule;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +22,7 @@ class ApiController extends Controller
 
         return response()->json($customers);
     }
-    
+
     public function login(Request $request)
     {
         $email = $request->input('email');
@@ -71,7 +73,7 @@ class ApiController extends Controller
     {
         $id = request()->input('id');
         $date = date("Y-m-d");
-        DB::table('costumer')->where('id', $id)->update(['status' => 'active','subcribe_date' => $date]);
+        DB::table('costumer')->where('id', $id)->update(['status' => 'active', 'subcribe_date' => $date]);
 
         echo "Data Updated";
     }
@@ -147,12 +149,11 @@ class ApiController extends Controller
 
     public function getRiwayat()
     {
-        $riwayat = DB::table('costumer')
-        ->join('product', 'costumer.id_product', '=', 'product.id')
-        ->join('transaction', 'costumer.id', '=', 'transaction.id_costumer')
-        ->join('users', 'transaction.users', '=', 'users.id')
-        ->select('costumer.*', 'product.*', 'transaction.*', 'users.*')
-        ->get();
+        $riwayat = DB::table('transaction')
+            ->join('costumer', 'costumer.id', '=', 'transaction.id_costumer')
+            ->join('product', 'product.id', '=', 'costumer.id_product')
+            ->select('transaction.*', 'costumer.*', 'product.*')
+            ->get();
 
         return response()->json($riwayat);
     }
@@ -180,13 +181,13 @@ class ApiController extends Controller
     {
         $id = request()->input('id');
         $password = request()->input('password');
-    
+
         $hashedPassword = Hash::make($password);
-    
+
         DB::table('costumer')->where('id', $id)->update([
             'password' => $hashedPassword,
         ]);
-    
+
         return "Data Updated";
     }
     public function store(Request $request)
@@ -199,10 +200,44 @@ class ApiController extends Controller
             'roles' => $request->input('roles'), // Menggunakan role_id sebagai nama kolom
             'address' => $request->input('address')
         ];
-    
+
         DB::table('users')->insert($user);
-    
+
         return response()->json(['message' => 'Admin berhasil ditambahkan.'], 201);
     }
 
+    public function edit(Request $request)
+    {
+        $id = $request->input('id');
+        $customer = Customer::find($id);
+
+        if (!$customer) {
+            return response()->json([
+                'message' => 'Pelanggan tidak ditemukan.',
+            ], 404);
+        }
+
+        $customer->status = "active";
+
+        if ($customer->status === 'active') {
+            $customer->subcribe_date = Carbon::now()->toDateString();
+            $expireDate = Carbon::now()->addDays(30)->toDateString();
+
+            Schedule::create([
+                'customer_id' => $customer->id,
+                'status' => 'non active',
+                'expire_date' => $expireDate,
+            ]);
+        } else {
+            Schedule::where('customer_id', $customer->id)->delete();
+            $customer->subcribe_date = null;
+        }
+
+        $customer->save();
+
+        return response()->json([
+            'message' => 'Berhasil',
+            'customer' => $customer,
+        ]);
+    }
 }

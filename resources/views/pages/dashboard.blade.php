@@ -17,7 +17,7 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                                <div class="icon icon-shape bg-gradient-info shadow-primary text-center rounded-circle">
                                     <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                                <div class="icon icon-shape bg-gradient-secondary shadow-info text-center rounded-circle">
                                     <i class="fa fa-users text-lg text-sm opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -402,7 +402,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
-                    borderColor: "#fb6340",
+                    borderColor: "#172b4d",
                     backgroundColor: gradientStroke1,
                     borderWidth: 3,
                     fill: true,

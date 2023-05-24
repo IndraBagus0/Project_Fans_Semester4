@@ -47,20 +47,6 @@
                                         </div>
                                     </form>
                                 </div>
-                                {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                    <p class="mb-1 text-sm mx-auto">
-                                        Forgot you password? Reset your password
-                                        <a href="{{ route('reset-password') }}"
-                                            class="text-primary text-gradient font-weight-bold">here</a>
-                                    </p>
-                                </div>
-                                <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                    <p class="mb-4 text-sm mx-auto">
-                                        Don't have an account?
-                                        <a href="{{ route('register') }}"
-                                            class="text-primary text-gradient font-weight-bold">Sign up</a>
-                                    </p>
-                                </div> --}}
                             </div>
                         </div>
                         <div
@@ -68,9 +54,8 @@
                             <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
                                 style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
               background-size: cover;">
-                                <span class="mask bg-gradient-primary opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new
-                                    currency"</h4>
+                                <span class="mask bg-gradient-primary opacity-2"></span>
+                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Fans Vision"</h4>
                                 <p class="text-white position-relative">The more effortless the writing looks, the more
                                     effort the writer actually put into the process.</p>
                             </div>

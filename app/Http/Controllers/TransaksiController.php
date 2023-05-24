@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-use App\Models\Product;
-use App\Models\Produk;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -14,8 +12,11 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $customer = Customer::with('product')
-            ->where('status', 'non active')
+        // $customer = Customer::get();
+        // $customer = Customer::where('status', 'non active')->get();
+        $customer = Customer::join('product', 'costumer.id_product', '=', 'product.id')
+            ->select('costumer.*', 'product.name_product', 'product.speed', 'product.price', 'product.bandwith')
+            ->where('costumer.status', 'non active')
             ->get();
 
         return view('pages.transaksi.transaksi', compact('customer'));

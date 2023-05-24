@@ -91,16 +91,21 @@
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'keRiwayat' ? 'active' : '' }}"
-                    href="{{ route('keRiwayat') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Riwayat</span>
-                </a>
-            </li>
+            @php
+                $user = auth()->user();
+            @endphp
+            @if ($user && $user->roles != 2)
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'keRiwayat' ? 'active' : '' }}"
+                        href="{{ route('keRiwayat') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Riwayat</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </aside>

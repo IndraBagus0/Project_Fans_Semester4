@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -25,25 +26,40 @@ class CustomerObserver
      * @param  \App\Models\Customer  $customer
      * @return void
      */
-    public function updated(Customer $costumer)
+    public function updated(Customer $customer)
     {
-        if ($costumer->status === 'active') {
+        if ($customer->status === 'active') {
             // Cek apakah pelanggan sudah memiliki transaksi sebelumnya
-            $existingTransaction = Transaction::where('id_costumer', $costumer->id)->first();
+            $existingTransaction = Transaction::where('id_costumer', $customer->id)->first();
 
             if (!$existingTransaction) {
-                $transaction = new Transaction();
-                $transaction->date_transaction = now();
-                $transaction->total = 1000; // Atur jumlah total sesuai kebutuhan
+                $product = Product::where('id', $customer->id_product)->first(); // Mengambil produk dengan ID 1 (sesuaikan dengan kebutuhan Anda)
+                if ($product) {
+                    $transaction = new Transaction();
+                    $transaction->date_transaction = now();
+                    $transaction->total = $product->price; // Menggunakan harga produk sebagai total
+                    // Menggunakan ID user dari session login
+                    $transaction->users = Auth::id();
+                    $transaction->id_costumer = $customer->id;
+                    $transaction->save();
+                }
+            } else {
+                $product = Product::where('id', $customer->id_product)->first(); // Mengambil produk dengan ID 1 (sesuaikan dengan kebutuhan Anda)
+                if ($product) {
+                    $transaction = new Transaction();
+                    $transaction->date_transaction = now();
+                    $transaction->total = $product->price; // Menggunakan harga produk sebagai total
 
-                // Menggunakan ID user dari session login
-                $transaction->users = Auth::id();
+                    // Menggunakan ID user dari session login
+                    $transaction->users = Auth::id();
 
-                $transaction->id_costumer = $costumer->id;
-                $transaction->save();
+                    $transaction->id_costumer = $customer->id;
+                    $transaction->save();
+                }
             }
         }
     }
+
 
     /**
      * Handle the Customer "deleted" event.
