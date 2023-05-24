@@ -21,23 +21,24 @@
                     </div>
                     <div class="card-body pt-4 p-3">
                         <ul class="list-group">
-                            @foreach ($product as $prod)
+                            @foreach ($product as $product)
                                 <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">{{ $prod->name_product }}</h6>
+                                        <h6 class="mb-3 text-sm">{{ $product->name_product }}</h6>
                                         <span class="mb-2 text-xs">Id: <span
-                                                class="text-dark font-weight-bold ms-sm-2">{{ $prod->id }}</span></span>
+                                                class="text-dark font-weight-bold ms-sm-2">{{ $product->id }}</span></span>
                                         <span class="mb-2 text-xs">Kecepatan: <span
-                                                class="text-dark ms-sm-2 font-weight-bold">{{ $prod->speed }}</span></span>
+                                                class="text-dark ms-sm-2 font-weight-bold">{{ $product->speed }}</span></span>
                                         <span class="mb-2 text-xs">Harga: <span
                                                 class="text-dark ms-sm-2 font-weight-bold">Rp
-                                                {{ $prod->price }}</span></span>
+                                                {{ $product->price }}</span></span>
                                         <span class="text-xs">Bandwith: <span
-                                                class="text-dark ms-sm-2 font-weight-bold">{{ $prod->bandwith }}</span></span>
+                                                class="text-dark ms-sm-2 font-weight-bold">{{ $product->bandwith }}</span></span>
                                         <span class="text-xs">
                                             Qr:
-                                            @if ($prod->foto)
-                                                <a href="{{ asset('storage/foto_produk/' . $prod->foto) }}" target="_blank">
+                                            @if ($product->foto)
+                                                <a href="{{ asset('storage/foto_produk/' . $product->foto) }}"
+                                                    target="_blank">
                                                     <span class="text-dark ms-sm-2 font-weight-bold">Lihat Foto</span>
                                                 </a>
                                             @else
@@ -46,7 +47,7 @@
                                         </span>
                                     </div>
                                     <div class="ms-auto text-end">
-                                        <form action="{{ route('produk.hapus', $prod->id) }}" method="POST">
+                                        <form action="{{ route('produk.hapus', $product->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0"
@@ -55,15 +56,15 @@
                                             </button>
                                         </form>
                                         <a class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModalEdit{{ $prod->id }}"
-                                            href="{{ route('produk.edit', $prod->id) }}">
+                                            data-bs-target="#exampleModalEdit{{ $product->id }}"
+                                            href="{{ route('produk.edit', $product->id) }}">
                                             <i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit
                                         </a>
                                     </div>
                                 </li>
 
                                 {{-- modal edit --}}
-                                <div class="modal fade" id="exampleModalEdit{{ $prod->id }}" tabindex="-1"
+                                <div class="modal fade" id="exampleModalEdit{{ $product->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -74,8 +75,8 @@
                                                             Edit Produk</h3>
                                                     </div>
                                                     <form id="edit_produk_form"
-                                                        action="{{ route('produk.update', $prod->id) }}" method="POST"
-                                                        role="form text-left">
+                                                        action="{{ route('produk.update', $product->id) }}" method="POST"
+                                                        role="form text-left" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="card-body pb-3">
@@ -83,29 +84,34 @@
                                                             <div class="input-group mb-3">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Nama" aria-label="Name" name="name_product"
-                                                                    value="{{ $prod->name_product }}"
+                                                                    value="{{ $product->name_product }}"
                                                                     aria-describedby="name-addon">
                                                             </div>
                                                             <label>Kecepatan</label>
                                                             <div class="input-group mb-3">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Kecepatan" aria-label="Name" name="speed"
-                                                                    value="{{ $prod->speed }}"
+                                                                    value="{{ $product->speed }}"
                                                                     aria-describedby="name-addon">
                                                             </div>
                                                             <label>Harga</label>
                                                             <div class="input-group mb-3">
                                                                 <input type="number" class="form-control"
                                                                     placeholder="Harga" aria-label="Name" name="price"
-                                                                    value="{{ $prod->price }}"
+                                                                    value="{{ $product->price }}"
                                                                     aria-describedby="name-addon">
                                                             </div>
                                                             <label>Banwith</label>
                                                             <div class="input-group mb-3">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="bandwith" aria-label="Name" name="bandwith"
-                                                                    value="{{ $prod->bandwith }}"
+                                                                    value="{{ $product->bandwith }}"
                                                                     aria-describedby="name-addon">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="foto">Foto</label>
+                                                                <input type="file" class="form-control" id="foto"
+                                                                    name="foto">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
