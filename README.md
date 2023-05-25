@@ -40,6 +40,9 @@
    ```console
    php artisan storage:link
    ```
+   ```console
+   php artisan schedule:run
+   ```
 
 3. Run server
    ```console
