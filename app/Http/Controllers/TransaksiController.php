@@ -7,6 +7,7 @@ use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\Produk;
 
 class TransaksiController extends Controller
 {
@@ -18,8 +19,9 @@ class TransaksiController extends Controller
             ->select('costumer.*', 'product.name_product', 'product.speed', 'product.price', 'product.bandwith')
             ->where('costumer.status', 'non active')
             ->get();
+        $products = Produk::all();
 
-        return view('pages.transaksi.transaksi', compact('customer'));
+        return view('pages.transaksi.transaksi', compact('customer', 'products'));
     }
     public function edit(Request $request, $id)
     {
@@ -47,6 +49,21 @@ class TransaksiController extends Controller
 
         $customer->save();
 
+        return back()->with('succes', 'Berhasil');
+    }
+    public function ubah(Request $request, $id)
+    {
+        // Retrieve the selected product from the request
+        $selectedProduct = $request->input('selected_product');
+
+        // Find the customer by their ID
+        $customer = Customer::findOrFail($id);
+
+        // Update the product column
+        $customer->id_product = $selectedProduct;
+        $customer->save();
+
+        // Redirect back or perform any other necessary actions
         return back()->with('succes', 'Berhasil');
     }
 }

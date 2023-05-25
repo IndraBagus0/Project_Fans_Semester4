@@ -89,9 +89,12 @@
                                             </div>
                                         </td>
                                         <td class="ms-auto text-center">
-                                            <a class="align-middle text-center text-sm">
+                                            {{-- <a class="align-middle text-center text-sm">
                                                 <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
-                                                        class="fas fa-file-pdf text-lg me-1"></i>PDF</button></a>
+                                                        class="fas fa-file-pdf text-lg me-1"></i>PDF</button></a> --}}
+                                            <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"
+                                                href="{{ route('export-pdf', $row->id) }}"><i
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</a>
                                             <a class="btn btn-link text-danger text-gradient px-3 mb-0"
                                                 onclick="return confirm('Are you sure want to delete {{ $row->total }} ?')"
                                                 href="{{ route('riwayat.hapus', $row->id) }}"><i

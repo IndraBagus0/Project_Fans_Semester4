@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
 	Route::controller(RiwayatController::class)->prefix('Riwayat')->group(function () {
 		Route::get('', 'index')->name('keRiwayat');
 		Route::get('hapus/{id}', 'hapus')->name('riwayat.hapus');
+		route::get('lihat/{$id}', 'pdf')->name('export-pdf');
 	});
 	//route Transaksi
 	Route::controller(TransaksiController::class)->prefix('Transaksi')->group(function () {
@@ -82,6 +83,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('tambah', 'simpan')->name('transaksi.tambah.simpan');
 		Route::put('edit/{id}', 'edit')->name('transaksi.edit');
 		Route::post('edit/{id}', 'update')->name('transaksi.tambah.update');
+		Route::put('ubah/{id}', 'ubah')->name('ubah.produk');
 		Route::delete('hapus/{id}', 'hapus')->name('transaksi.hapus');
 	});
 	// Route Data Pelanggan

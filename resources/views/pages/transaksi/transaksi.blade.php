@@ -36,7 +36,7 @@
                                             Tanggal Berlanggan
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Produk
+                                            Ubah Produk
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
@@ -79,13 +79,41 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="d-flex px-3 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $user->product->name_product }}</h6>
                                                     </div>
                                                 </div>
+                                            </td> --}}
+                                            <td>
+                                                <div class="d-flex px-3 py-1">
+                                                    <div class="dropdown">
+                                                        <form action="{{ route('ubah.produk', $user->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+
+                                                            <button class="btn btn-link text-primary px-3 mb-0"
+                                                                type="button" id="dropdownMenuButton"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                                {{ $user->product->name_product }}
+                                                            </button>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                @foreach ($products as $product)
+                                                                    <li>
+                                                                        <button class="dropdown-item" type="submit"
+                                                                            name="selected_product"
+                                                                            value="{{ $product->id }}">
+                                                                            {{ $product->name_product }}
+                                                                        </button>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </td>
+
                                             <td>
                                                 <form id="status-form-{{ $user->id }}"
                                                     action="{{ route('transaksi.edit', $user->id) }}" method="POST">
