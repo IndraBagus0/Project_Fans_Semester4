@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
                     Schedule::where('customer_id', $customer->id)->delete();
                 }
             }
-        })->everyMinute(); // Menjalankan tugas setiap hari
+        })->everySixHours(); // Menjalankan tugas setiap hari
     }
 
 

@@ -94,7 +94,7 @@ class ApiController extends Controller
             'phone_number' => $phone_number,
             'status' => 'non active',
             'address' => $address,
-            'id_product' => 6,
+            'id_product' => 1,
             'subcribe_date' => $date,
         ]);
 
@@ -132,6 +132,7 @@ class ApiController extends Controller
                     'email' => $user->email,
                     'address' => $user->address,
                     'phone_number' => $user->phone_number,
+                    'subcribe_date' => $user->subcribe_date,
                 ]);
             } else {
                 return response()->json([
@@ -239,5 +240,25 @@ class ApiController extends Controller
             'message' => 'Berhasil',
             'customer' => $customer,
         ]);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->has('image')) {
+            $image = $request->input('image');
+            $imageStore = time() . '_' . uniqid() . '.jpeg';
+            $targetPath = public_path('images/') . $imageStore;
+            file_put_contents($targetPath, base64_decode($image));
+    
+            // Mengupdate kolom "image" pada tabel "customer" berdasarkan ID
+            $customerId = $request->input('id');
+            DB::table('costumer')
+                ->where('id', $customerId)
+                ->update(['image' => $imageStore]);
+    
+            return response()->json(['message'=>'gambar berhasil upload'], 200);
+        } else {
+            return response()->json(['error' => 'No image found'], 400);
+        }
     }
 }
