@@ -74,7 +74,7 @@ Route::middleware('auth')->group(function () {
 	Route::controller(RiwayatController::class)->prefix('Riwayat')->group(function () {
 		Route::get('', 'index')->name('keRiwayat');
 		Route::get('hapus/{id}', 'hapus')->name('riwayat.hapus');
-		route::get('lihat/{$id}', 'pdf')->name('export-pdf');
+		route::get('lihat/{id}', 'pdf')->name('export-pdf');
 	});
 	//route Transaksi
 	Route::controller(TransaksiController::class)->prefix('Transaksi')->group(function () {

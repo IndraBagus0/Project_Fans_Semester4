@@ -33,7 +33,7 @@
                                             Alamat
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Berlanggan
+                                            Bukti Pembayaran
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Ubah Produk
@@ -71,13 +71,17 @@
                                             <td>
                                                 <div class="d-flex px-3 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        @if ($user->subcribe_date)
-                                                            <h6 class="mb-0 text-sm">{{ $user->subcribe_date }}</h6>
+                                                        @if ($user->image)
+                                                            <a href="{{ asset('images/' . $user->image) }}" target="_blank">
+                                                                <span class="text-dark ms-sm-2 font-weight-bold">Lihat
+                                                                    Foto</span>
+                                                            </a>
                                                         @else
-                                                            <h6 class="mb-0 text-sm">Belum berlangganan</h6>
+                                                            <span class="text-dark ms-sm-2 font-weight-bold">Tidak Ada QR
+                                                                Code</span>
                                                         @endif
+
                                                     </div>
-                                                </div>
                                             </td>
                                             {{-- <td>
                                                 <div class="d-flex px-3 py-1">

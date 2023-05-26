@@ -5,9 +5,16 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
+
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Authors table</h6>
+                        <div class="d-flex justify-content-between">
+                            <p class="mb-0">Riwayat</p>
+
+                            <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s" href="#"><i
+                                    class="fas fa-file-excel text-lg me-1"></i>Excel</a>
+
+                        </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -89,9 +96,6 @@
                                             </div>
                                         </td>
                                         <td class="ms-auto text-center">
-                                            {{-- <a class="align-middle text-center text-sm">
-                                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"><i
-                                                        class="fas fa-file-pdf text-lg me-1"></i>PDF</button></a> --}}
                                             <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"
                                                 href="{{ route('export-pdf', $row->id) }}"><i
                                                     class="fas fa-file-pdf text-lg me-1"></i>PDF</a>

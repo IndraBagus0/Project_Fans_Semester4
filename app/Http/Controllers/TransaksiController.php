@@ -13,8 +13,6 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        // $customer = Customer::get();
-        // $customer = Customer::where('status', 'non active')->get();
         $customer = Customer::join('product', 'costumer.id_product', '=', 'product.id')
             ->select('costumer.*', 'product.name_product', 'product.speed', 'product.price', 'product.bandwith')
             ->where('costumer.status', 'non active')

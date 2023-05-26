@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('status', 100)->default('non active');
             $table->string('address', 100)->nullable();
             $table->date('subcribe_date')->nullable();
+            $table->string('image', 100)->nullable();
             $table->timestamps();
         });
     }
