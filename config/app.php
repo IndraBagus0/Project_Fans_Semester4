@@ -167,7 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -189,7 +189,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-
+    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     'aliases' => Facade::defaultAliases()->merge([
         // ...
     ])->toArray(),

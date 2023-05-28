@@ -10,9 +10,6 @@
                         <h5 class="mb-1">
                             {{ auth()->user()->name ?? 'name' }}
                         </h5>
-                        <p class="mb-0 font-weight-bold text-sm">
-                            Public Relations
-                        </p>
                     </div>
                 </div>
                 {{-- <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
@@ -56,8 +53,8 @@
                         @csrf
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
-                                <p class="mb-0">Edit Profile</p>
-                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
+                                <p class="mb-0">Edit Profil</p>
+                                <button type="submit" class="btn btn-primary btn-sm ms-auto">Ubah</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -91,39 +88,70 @@
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                 </div>
-
-                            </div>
-                            <hr class="horizontal dark">
-                            <p class="text-uppercase text-sm">Ganti Password</p>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Password Lama</label>
-                                        <input class="form-control" type="text" name="password"
-                                            value="{{ old('password', auth()->user()->password) }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Password Baru</label>
-                                        <input class="form-control" type="text" name="password"
-                                            value="{{ old('password', auth()->user()->password) }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Password Baru</label>
-                                        <input class="form-control" type="text" name="password"
-                                            value="{{ old('password', auth()->user()->password) }}">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </form>
                 </div>
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">Ganti Password</p>
+                <form role="form" method="POST" action={{ route('password.update') }} enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-header pb-0">
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary btn-sm ms-auto">Ubah</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{-- <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Password Lama</label>
+                                <input class="form-control" type="text" name="password"
+                                    value="{{ old('password', auth()->user()->password) }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Password Baru</label>
+                                <input class="form-control" type="text" name="password"
+                                    value="{{ old('password', auth()->user()->password) }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Password Baru</label>
+                                <input class="form-control" type="text" name="password"
+                                    value="{{ old('password', auth()->user()->password) }}">
+                            </div>
+                        </div> --}}
+                        <div class="mb-3">
+                            <label for="oldPasswordInput" class="form-label"> Password lama</label>
+                            <input name="old_password" type="password"
+                                class="form-control @error('old_password') is-invalid @enderror" id="oldPasswordInput"
+                                placeholder="Old Password">
+                            @error('old_password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPasswordInput" class="form-label"> Password Baru</label>
+                            <input name="new_password" type="password"
+                                class="form-control @error('new_password') is-invalid @enderror" id="newPasswordInput"
+                                placeholder="New Password">
+                            @error('new_password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmNewPasswordInput" class="form-label">Konfirmasi Password</label>
+                            <input name="new_password_confirmation" type="password" class="form-control"
+                                id="confirmNewPasswordInput" placeholder="Confirm New Password">
+                        </div>
+
+                    </div>
+                </form>
             </div>
-            {{-- <div class="col-md-4">
+
+        </div>
+
+        {{-- <div class="col-md-4">
                 <div class="card card-profile">
                     <img src="/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top">
                     <div class="row justify-content-center">
@@ -183,7 +211,7 @@
                     </div>
                 </div>
             </div> --}}
-        </div>
-        @include('layouts.footers.auth.footer')
+    </div>
+    @include('layouts.footers.auth.footer')
     </div>
 @endsection

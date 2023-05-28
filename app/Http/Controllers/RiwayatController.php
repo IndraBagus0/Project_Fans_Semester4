@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Transaction;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use App\Exports\RiwayatExport;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RiwayatController extends Controller
 {
@@ -26,5 +27,9 @@ class RiwayatController extends Controller
     {
         $riwayat = Transaction::with('customer', 'user')->find($id);
         return view('pages.riwayat.invoice-pdf', compact('riwayat'));
+    }
+    public function export()
+    {
+        return Excel::download(new RiwayatExport, 'Riwayat.xlsx');
     }
 }

@@ -11,7 +11,7 @@
                         <div class="d-flex justify-content-between">
                             <p class="mb-0">Riwayat</p>
 
-                            <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s" href="#"><i
+                            <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s" href="{{ route('export-excel') }}"><i
                                     class="fas fa-file-excel text-lg me-1"></i>Excel</a>
 
                         </div>
@@ -96,9 +96,9 @@
                                             </div>
                                         </td>
                                         <td class="ms-auto text-center">
-                                            <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"
+                                            {{-- <a class="btn btn-link text-dark text-sm mb-0 px-0 ms-1s"
                                                 href="{{ route('export-pdf', $row->id) }}"><i
-                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</a>
+                                                    class="fas fa-file-pdf text-lg me-1"></i>PDF</a> --}}
                                             <a class="btn btn-link text-danger text-gradient px-3 mb-0"
                                                 onclick="return confirm('Are you sure want to delete {{ $row->total }} ?')"
                                                 href="{{ route('riwayat.hapus', $row->id) }}"><i

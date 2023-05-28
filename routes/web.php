@@ -41,6 +41,7 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middle
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
+	Route::post('/profilePassword', [UserProfileController::class, 'updatePassword'])->name('password.update');
 	Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
@@ -75,6 +76,7 @@ Route::middleware('auth')->group(function () {
 		Route::get('', 'index')->name('keRiwayat');
 		Route::get('hapus/{id}', 'hapus')->name('riwayat.hapus');
 		route::get('lihat/{id}', 'pdf')->name('export-pdf');
+		route::get('riwayat/export/', 'export')->name('export-excel');
 	});
 	//route Transaksi
 	Route::controller(TransaksiController::class)->prefix('Transaksi')->group(function () {
@@ -94,6 +96,3 @@ Route::middleware('auth')->group(function () {
 		Route::delete('hapus/{id}', 'hapus')->name('pelanggan.hapus');
 	});
 });
-
-// git config user.name "indrabagus0"
-//git config user.email "indrabusiness00@gmail.com"

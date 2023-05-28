@@ -36,7 +36,7 @@
                                             Tanggal Berlanggan
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Email
+                                            Non Aktifkan
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -98,11 +98,10 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="dropdown">
-                                                    <a class="btn btn-link text-primary text-gradient px-3 mb-0"
-                                                        id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
+                                                    <a class="btn btn-link text-primary " id="dropdownMenuButton"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class="fas fa-pencil-alt text-dark me-2"></i>
-                                                        Konfirmasi
+                                                        Ubah
                                                     </a>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <li>
