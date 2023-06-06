@@ -13,9 +13,10 @@ class DataPelangganController extends Controller
     //
     public function index()
     {
-        $customer = Customer::get();
+        $customer = Customer::orderBy('status', 'desc')->get();
         return view('pages.data-pelanggan.data-pelanggan', compact('customer'));
     }
+    
 
     public function edit($id)
     {

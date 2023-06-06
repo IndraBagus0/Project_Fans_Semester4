@@ -25,6 +25,7 @@ class TransaksiController extends Controller
     {
         $customer = Customer::find($id);
         $customer->status = $request->input('status');
+        $customer->image = '';
 
         if ($customer->status === 'active') {
             // Atur tanggal subscribe menjadi tanggal sekarang

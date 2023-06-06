@@ -73,7 +73,7 @@ class ApiController extends Controller
     {
         $id = request()->input('id');
         $date = date("Y-m-d");
-        DB::table('costumer')->where('id', $id)->update(['status' => 'active', 'subcribe_date' => $date]);
+        DB::table('costumer')->where('id', $id)->update(['status' => 'active', 'subcribe_date' => $date, 'image' => '' ]);
 
         echo "Data Updated";
     }
