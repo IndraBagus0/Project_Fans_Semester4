@@ -96,6 +96,7 @@ class ApiController extends Controller
             'address' => $address,
             'id_product' => 1,
             'subcribe_date' => $date,
+            'image' => '',
         ]);
 
         echo "Data Berhasil di Simpan";
@@ -244,21 +245,51 @@ class ApiController extends Controller
 
     public function uploadImage(Request $request)
     {
-        if ($request->has('image')) {
-            $image = $request->input('image');
-            $imageStore = time() . '_' . uniqid() . '.jpeg';
-            $targetPath = public_path('images/') . $imageStore;
-            file_put_contents($targetPath, base64_decode($image));
-    
-            // Mengupdate kolom "image" pada tabel "customer" berdasarkan ID
-            $customerId = $request->input('id');
-            DB::table('costumer')
-                ->where('id', $customerId)
-                ->update(['image' => $imageStore]);
-    
-            return response()->json(['message'=>'gambar berhasil upload'], 200);
+        $customerId = $request->input('id');
+
+        // Mengecek apakah kolom "image" sudah terisi atau tidak
+        $existingImage = DB::table('costumer')
+                        ->where('id', $customerId)
+                        ->value('image');
+
+        if ($existingImage) {
+            // Jika kolom "image" sudah terisi, kembalikan respons yang sesuai
+            return response()->json('Anda sudah mengupload gambar sebelumnya, admin sedang memprosesnya', 200);
         } else {
-            return response()->json(['error' => 'No image found'], 400);
+            // Jika kolom "image" masih kosong, lanjutkan dengan proses mengupload gambar
+            if ($request->has('image')) {
+                $image = $request->input('image');
+                $imageStore = time() . '_' . uniqid() . '.jpeg';
+                $targetPath = public_path('images/') . $imageStore;
+                file_put_contents($targetPath, base64_decode($image));
+
+                // Mengupdate kolom "image" pada tabel "customer" berdasarkan ID
+                DB::table('costumer')
+                    ->where('id', $customerId)
+                    ->update(['image' => $imageStore]);
+
+                return response()->json('Gambar berhasil diupload', 200);
+            } else {
+                return response()->json(['error' => 'No image found'], 400);
+            }
         }
     }
+
+    public function costumer(Request $request)
+    {
+        $customerId = $request->query('costumer_id');
+
+        $query = DB::table('costumer')
+            ->join('product', 'product.id', '=', 'costumer.id_product')
+            ->select( 'costumer.id as costumer_id','costumer.*', 'product.*');
+
+        if ($customerId) {
+            $query->where('costumer.id', $customerId);
+        }
+
+        $customers = $query->get();
+
+        return response()->json($customers);
+    }
+
 }

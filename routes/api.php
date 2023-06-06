@@ -30,3 +30,4 @@ Route::post('/updateProfil', [ApiController::class, 'updateProfil']);
 Route::post('/updatePassword', [ApiController::class, 'updatePassword']);
 Route::post('/edit', [ApiController::class, 'edit']);
 Route::post('/up', [ApiController::class, 'uploadImage']);
+Route::get('/costumer', [ApiController::class, 'costumer']);
