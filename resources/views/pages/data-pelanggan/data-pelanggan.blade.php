@@ -78,6 +78,8 @@
                                                 <span class="badge badge-sm bg-gradient-success">Aktif</span>
                                                 @elseif ($user->status == 'non active')
                                                 <span class="badge badge-sm bg-gradient-danger">Tidak Aktif</span>
+                                                @elseif ($user->status == 'Diproses')
+                                                <span class="badge badge-sm bg-gradient-secondary">Menunggu Konfirmasi</span>
                                                 @endif
                                             </div>
                                         </div>

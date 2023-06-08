@@ -15,12 +15,17 @@ class TransaksiController extends Controller
     {
         $customer = Customer::join('product', 'costumer.id_product', '=', 'product.id')
             ->select('costumer.*', 'product.name_product', 'product.speed', 'product.price', 'product.bandwith')
-            ->where('costumer.status', 'non active')
+            ->where('costumer.status', 'Diproses')
+            ->orWhere('costumer.status', 'non active')
+            ->orderBy('costumer.status', 'asc')
             ->get();
+    
         $products = Produk::all();
-
+    
         return view('pages.transaksi.transaksi', compact('customer', 'products'));
     }
+    
+
     public function edit(Request $request, $id)
     {
         $customer = Customer::find($id);

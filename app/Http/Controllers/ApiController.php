@@ -77,6 +77,13 @@ class ApiController extends Controller
 
         echo "Data Updated";
     }
+    public function updateStatus()
+    {
+        $id = request()->input('id');
+        DB::table('costumer')->where('id', $id)->update(['status' => 'Diproses']);
+
+        echo "Data Updated";
+    }
 
     public function register()
     {

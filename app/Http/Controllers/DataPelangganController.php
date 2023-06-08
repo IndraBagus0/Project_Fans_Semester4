@@ -13,9 +13,10 @@ class DataPelangganController extends Controller
     //
     public function index()
     {
-        $customer = Customer::orderBy('status', 'desc')->get();
+        $customer = Customer::orderByRaw("CASE WHEN status = 'Diproses' THEN 0 ELSE 1 END, status ASC")->get();
         return view('pages.data-pelanggan.data-pelanggan', compact('customer'));
     }
+
     
 
     public function edit($id)

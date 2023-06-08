@@ -74,11 +74,10 @@
                                                 @if ($user->image)
                                                 <a href="{{ asset('images/' . $user->image) }}" target="_blank">
                                                     <span class="text-dark ms-sm-2 font-weight-bold">Lihat
-                                                        Foto</span>
+                                                        bukti transfer</span>
                                                 </a>
                                                 @else
-                                                <span class="text-dark ms-sm-2 font-weight-bold">Tidak Ada QR
-                                                    Code</span>
+                                                <span class="text-dark ms-sm-2 font-weight-bold">Tidak ada bukti transfer</span>
                                                 @endif
 
                                             </div>
